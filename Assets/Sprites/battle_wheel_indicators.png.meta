@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6bbd11678dd7b5344806c8115b1150f9
+guid: 6c1ceb4b71ce900428bcfcb0fdb7c54e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6360389993209520165
-    second: carousel background_0
+      213: 4148607965390286770
+    second: battle_wheel_indicators_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: carousel background_0
+      name: battle_wheel_indicators_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 800
+        width: 36
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 520e3320005a44850800000000000000
-      internalID: 6360389993209520165
+      spriteID: 2bfa179d6f0d29930800000000000000
+      internalID: 4148607965390286770
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      carousel background_0: 6360389993209520165
+      battle_wheel_indicators_0: 4148607965390286770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
