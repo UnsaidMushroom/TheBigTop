@@ -1,3 +1,4 @@
+using recruits;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,22 +52,30 @@ public class Slots : MonoBehaviour
         assignSprite(centerImage, rolls[1]);
         assignSprite(rightImage, rolls[2]);
 
+
+
+        Recruit returned = null;
         if (rolls[0] == rolls[1] && rolls[1] == rolls[2])
         {
             if (rolls[0] == rollOption.CHERRY)
             {
-                Debug.Log("rolled 3 Cherries!, uncommon result!");
-                //choose from uncommon options
+                Debug.Log("rolled 3 Cherries!, rare result!");
+                //choose from rare options
+                returned = RecruitManager.stcRandRecruit(Rarity.RARE);
             }
             else if (rolls[0] == rollOption.BELL)
             {
-                Debug.Log("rolled 3 Bells!, rare result!");
-                //choose from rare options
+                Debug.Log("rolled 3 Bells!, epic result!");
+                //choose from epic options
+                returned = RecruitManager.stcRandRecruit(Rarity.EPIC);
+
             }
             else if (rolls[0] == rollOption.SEVEN)
             {
                 Debug.Log("Rolled 3 Sevens!, Legendary result!");
                 //choose from legendary options
+                returned = RecruitManager.stcRandRecruit(Rarity.LEGENDARY);
+
             }
         }
         else
@@ -74,8 +83,11 @@ public class Slots : MonoBehaviour
             //all different
             Debug.Log("rolled different items, common result");
             //choose from common options
+            returned = RecruitManager.stcRandRecruit(Rarity.COMMON);
+
         }
-        
+        Debug.Log("slots gave you a recruit: " + returned.name);
+
 
 
     }
