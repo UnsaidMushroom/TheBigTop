@@ -16,6 +16,9 @@ namespace recruits
         public int maxHP;
         public int remainingHP;
 
+        public float timeLastModified;
+
+
 
         public Recruit(string name, Rarity rarity, int damage, string description, int maxHP)
         {
@@ -34,6 +37,8 @@ namespace recruits
                 sprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritesPath + "missing_sprite" + ".png", typeof(Sprite));
             }
 
+            timeLastModified = Time.time ;
+
 
         }
 
@@ -42,6 +47,53 @@ namespace recruits
             return new Recruit(name, rarity, damage, attackDescription, maxHP);
         }
 
+        public int compareByRarity(Recruit other)
+        {
+            //returns -1 if this is less rare, 1 if more rare
+            // if just as rare, then goes by  name
+            //this is used to sort so that rarer ones appear first (the list may need reversed)
+
+            if (other == null)
+            {
+                return 1;
+            }
+            else if (rarity > other.rarity) //making use of the fact that c# treats structs as ints, common = 0, legendary = 3
+            {
+                return 1;
+            }
+            else if (rarity < other.rarity)
+            {
+                return -1;
+            }
+            else
+            {
+                //sort by name
+                return name.CompareTo(other.name);
+                
+            }
+
+        }
+
+        public int compareByTime(Recruit other)
+        {
+            //returns -1 if this was modified less recently, 1 if more recent
+            if (other == null)
+            {
+                return 1;
+            }
+            else if (timeLastModified > other.timeLastModified)
+            {
+                return 1;
+            }
+            else if (timeLastModified < other.timeLastModified)
+            {
+                return -1;
+            }
+            else
+            { // unlikely to duplicate time exactly, 
+                return name.CompareTo(other.name);
+            } 
+        }
 
 
     }

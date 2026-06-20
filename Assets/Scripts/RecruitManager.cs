@@ -39,7 +39,10 @@ namespace recruits {
                 initializeRecruits();
 
             }
-
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void initializeRecruits()
@@ -97,8 +100,15 @@ namespace recruits {
                 }
             }
 
+            
+            setStartingRecruits();
+
+        }
+
+        public void setStartingRecruits()
+        {
             //assign starting recruits --//may consider having extra default recruits to start
-            for (int i = 0; i < 5;  i++) //arbitrary, start with 5 random common recruits
+            for (int i = 0; i < 5; i++) //arbitrary, start with 5 random common recruits
             {
                 recruitList.Add(getRandomRecruit(Rarity.COMMON));
             }
@@ -109,8 +119,6 @@ namespace recruits {
                 debugMsg += recruit.name + "\n";
             }
             Debug.Log(debugMsg);
-
-
         }
 
         public Recruit getRandomRecruit(Rarity rarity)
@@ -143,11 +151,14 @@ namespace recruits {
             return Instance.getRandomRecruit(rarity);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
+        public void Restart()
+        {
+            recruitList.Clear();
+            setStartingRecruits();
         }
+
+
     }
 
 
