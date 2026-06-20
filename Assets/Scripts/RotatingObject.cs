@@ -29,4 +29,6 @@ public class RotatingObject : MonoBehaviour
         //on left press, right to center, center to left, left to right
         
     }
+
+    //Hi, for the rotation i was imagining several degrees of rotation, such that you can swivel in live time and react to attacks, not switching between a few set locations. something probably involving sin/cos, at least in my vision
 }
