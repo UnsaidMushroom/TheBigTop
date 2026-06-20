@@ -1,0 +1,120 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+
+
+public class Slots : MonoBehaviour
+{
+
+    public Image leftImage;
+    public Image centerImage;
+    public Image rightImage;
+
+
+    public Sprite CherrySprite;
+    public Sprite BellSprite;
+    public Sprite SevenSprite;
+
+    public enum rollOption
+    {
+        CHERRY,
+        BELL,
+        SEVEN
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+
+    public void spinMachine()
+    {
+        rollOption[] rolls = new rollOption[3];
+
+
+        rolls[0] = getRandomRoll();
+        rolls[1] = getRandomRoll();
+        rolls[2] = getRandomRoll();
+
+
+
+
+        assignSprite(leftImage, rolls[0]);
+        assignSprite(centerImage, rolls[1]);
+        assignSprite(rightImage, rolls[2]);
+
+        if (rolls[0] == rolls[1] && rolls[1] == rolls[2])
+        {
+            if (rolls[0] == rollOption.CHERRY)
+            {
+                Debug.Log("rolled 3 Cherries!, uncommon result!");
+                //choose from uncommon options
+            }
+            else if (rolls[0] == rollOption.BELL)
+            {
+                Debug.Log("rolled 3 Bells!, rare result!");
+                //choose from rare options
+            }
+            else if (rolls[0] == rollOption.SEVEN)
+            {
+                Debug.Log("Rolled 3 Sevens!, Legendary result!");
+                //choose from legendary options
+            }
+        }
+        else
+        {
+            //all different
+            Debug.Log("rolled different items, common result");
+            //choose from common options
+        }
+        
+
+
+    }
+
+
+    public rollOption getRandomRoll()
+    {
+        int MAX = 20;
+        int rand = Random.Range(0, MAX);
+
+        if (rand <= 10)
+        {
+            return rollOption.CHERRY;
+        }
+        else if (rand <= 17)
+        {
+            return rollOption.BELL;
+        }
+        else
+        {
+            return rollOption.SEVEN;
+        }
+
+    }
+
+    public void assignSprite(Image image, rollOption option)
+    {
+        if (option  == rollOption.CHERRY)
+        {
+            image.sprite = CherrySprite;
+        }
+        else if (option == rollOption.BELL)
+        {
+            image.sprite = BellSprite;
+        }
+        else if (option == rollOption.SEVEN)
+        {
+            image.sprite = SevenSprite;
+        }
+    }
+
+}
