@@ -23,7 +23,7 @@ namespace recruits
 
 
 
-        public Recruit(string name, Rarity rarity, int damage, string description, int maxHP, string type)
+        public Recruit(string name, Rarity rarity, int damage, string description, int maxHP, string type = "default")
         {
             this.name = name;
             this.rarity = rarity;
@@ -46,9 +46,12 @@ namespace recruits
 
         }
 
+        
+
+
         public Recruit getCopy()
         {
-            return new Recruit(name, rarity, damage, attackDescription, maxHP, type);
+            return new Recruit(name, rarity, damage, attackDescription, maxHP, attackType);
         }
 
         public int compareByRarity(Recruit other)
