@@ -636,6 +636,8 @@ GameObject:
   - component: {fileID: 336841623}
   - component: {fileID: 336841622}
   - component: {fileID: 336841621}
+  - component: {fileID: 336841625}
+  - component: {fileID: 336841626}
   m_Layer: 0
   m_Name: Spinning Creature Basic
   m_TagString: Untagged
@@ -656,6 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: 0}
+  rotateSpeed: 2
   centerPosition: {x: 0, y: 0, z: 0}
   rightPosition: {x: 0, y: 0, z: 0}
   leftPosition: {x: 0, y: 0, z: 0}
@@ -756,6 +759,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336841625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336841620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe69d95412895c4b8d73cd6da9dd53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseScale: {x: 1, y: 1, z: 1}
+--- !u!61 &336841626
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336841620}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &726187324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,6 +1067,7 @@ GameObject:
   - component: {fileID: 1090047622}
   - component: {fileID: 1090047621}
   - component: {fileID: 1090047623}
+  - component: {fileID: 1090047624}
   m_Layer: 0
   m_Name: battle_wheel
   m_TagString: Untagged
@@ -1097,6 +1160,115 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
+--- !u!60 &1090047624
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090047620}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 6.25}
+    newSize: {x: 6.4, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -3.46875, y: -2.625}
+      - {x: -3.265625, y: -2.453125}
+      - {x: -3.03125, y: -2.34375}
+      - {x: -2.4375, y: -2.15625}
+      - {x: -2.125, y: -2.09375}
+      - {x: -1.859375, y: -2.046875}
+      - {x: -1.390625, y: -1.984375}
+      - {x: -1.234375, y: -1.96875}
+      - {x: -1.046875, y: -1.953125}
+      - {x: -0.828125, y: -1.9375}
+      - {x: -0.484375, y: -1.921875}
+      - {x: -0.46875, y: -1.90625}
+      - {x: 0.421875, y: -1.90625}
+      - {x: 0.4375, y: -1.921875}
+      - {x: 0.78125, y: -1.9375}
+      - {x: 1.1875, y: -1.96875}
+      - {x: 1.484375, y: -2}
+      - {x: 1.921875, y: -2.0625}
+      - {x: 2.25, y: -2.125}
+      - {x: 2.5625, y: -2.203125}
+      - {x: 2.671875, y: -2.234375}
+      - {x: 2.984375, y: -2.34375}
+      - {x: 3.015625, y: -2.34375}
+      - {x: 3.25, y: -2.484375}
+      - {x: 3.390625, y: -2.59375}
+      - {x: 3.5, y: -2.75}
+      - {x: 3.46875, y: -2.9375}
+      - {x: 3.3125, y: -3.09375}
+      - {x: 3.3125, y: -3.125}
+      - {x: 5, y: -3.125}
+      - {x: 5, y: -1.828125}
+      - {x: 4.90625, y: -1.78125}
+      - {x: 4.703125, y: -1.703125}
+      - {x: 4.421875, y: -1.609375}
+      - {x: 4, y: -1.5}
+      - {x: 3.546875, y: -1.40625}
+      - {x: 3.171875, y: -1.34375}
+      - {x: 2.71875, y: -1.28125}
+      - {x: 2.4375, y: -1.25}
+      - {x: 1.734375, y: -1.1875}
+      - {x: 1.5, y: -1.171875}
+      - {x: 1.203125, y: -1.15625}
+      - {x: 0.8125, y: -1.140625}
+      - {x: -0.828125, y: -1.140625}
+      - {x: -1.21875, y: -1.15625}
+      - {x: -1.515625, y: -1.171875}
+      - {x: -1.75, y: -1.1875}
+      - {x: -2.140625, y: -1.21875}
+      - {x: -2.59375, y: -1.265625}
+      - {x: -2.96875, y: -1.3125}
+      - {x: -3.28125, y: -1.359375}
+      - {x: -3.890625, y: -1.453125}
+      - {x: -4.09375, y: -1.5}
+      - {x: -4.453125, y: -1.609375}
+      - {x: -4.78125, y: -1.71875}
+      - {x: -4.921875, y: -1.78125}
+      - {x: -5, y: -1.828125}
+      - {x: -5, y: -3.125}
+      - {x: -3.359375, y: -3.125}
+      - {x: -3.34375, y: -3.09375}
+      - {x: -3.515625, y: -2.9375}
+      - {x: -3.546875, y: -2.75}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1262349928
 GameObject:
   m_ObjectHideFlags: 0

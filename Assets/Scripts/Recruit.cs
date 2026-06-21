@@ -17,12 +17,13 @@ namespace recruits
         public string attackDescription;
         public int maxHP;
         public int remainingHP;
+        public string attackType;
 
         public float timeLastModified;
 
 
 
-        public Recruit(string name, Rarity rarity, int damage, string description, int maxHP)
+        public Recruit(string name, Rarity rarity, int damage, string description, int maxHP, string type)
         {
             this.name = name;
             this.rarity = rarity;
@@ -30,6 +31,7 @@ namespace recruits
             this.attackDescription = description;
             this.maxHP = maxHP;
             this.remainingHP = maxHP;
+            this.attackType = type;
 
 
 
@@ -46,7 +48,7 @@ namespace recruits
 
         public Recruit getCopy()
         {
-            return new Recruit(name, rarity, damage, attackDescription, maxHP);
+            return new Recruit(name, rarity, damage, attackDescription, maxHP, type);
         }
 
         public int compareByRarity(Recruit other)
