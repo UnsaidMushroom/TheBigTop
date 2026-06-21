@@ -1,14 +1,25 @@
 using UnityEngine;
 using recruits;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class RecruitViewerWindow : MonoBehaviour
 {
     public GameObject recruitTemplate;
     public GameObject content;
 
+    public int hOffset = 20;
+    public int vOffset = 20;
+    public int hPadding = 20;
+    public int vPadding = 20;
+    public int TemplateSize = 100;
+
+    private List<GameObject> population;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        population = new List<GameObject>();
         gameObject.SetActive(false);
     }
 
@@ -24,12 +35,36 @@ public class RecruitViewerWindow : MonoBehaviour
         gameObject.SetActive(true);
 
         //probably actually want to index so as to track distance...
-        foreach (Recruit recruit in RecruitManager.Instance.getSortedRecruits("rarity"))
+        List<Recruit> recruits = RecruitManager.Instance.getSortedRecruits("rarity");
+        for (int i = 0; i < recruits.Count; i++) 
         {
-            Instantiate(recruitTemplate, content.transform);
-            //recruitTemplate.GetComponent<RectTransform>().position = 
+            GameObject placed = Instantiate(recruitTemplate, content.transform);
+
+            float xPos = hOffset + 0.5f * TemplateSize + (TemplateSize + hPadding) * (i % 3);
+            float yPos = -(vOffset + 0.5f * TemplateSize + (TemplateSize + vPadding) * (i / 3));
+
+            placed.GetComponent<RectTransform>().localPosition = new Vector3 (xPos, yPos, 0);
+            //placed.GetComponent<RectTransform>().localPosition = new Vector3 (0, 0, 0);
+            population.Add(placed);
         }
+
+        //modify content box
+        float maxSize = 2*vOffset + (TemplateSize + vPadding) * ((recruits.Count / 3) + 1);
+        content.GetComponent<RectTransform>().sizeDelta = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, maxSize);
+
 
 
     }
+
+    public void hide()
+    {
+        int max = population.Count;
+        for (int i = 0; i < max; i++)
+        {
+            Destroy(population[i]);
+        }
+        population.Clear();
+        gameObject.SetActive(false);
+    }
+
 }

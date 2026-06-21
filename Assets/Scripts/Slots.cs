@@ -87,6 +87,7 @@ public class Slots : MonoBehaviour
 
         }
         Debug.Log("slots gave you a recruit: " + returned.name);
+        RecruitManager.Instance.recruitList.Add(returned);
 
 
 
