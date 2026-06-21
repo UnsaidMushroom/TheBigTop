@@ -6,7 +6,7 @@ namespace recruits
 {
     public class Recruit : IComparable<Recruit>
     {
-        public static string spritesPath = "Assets/Sprites";
+        public static string spritesPath = "Assets/Sprites/";
         public static string sortMode = "none";
 
         //stores data for a given recruit

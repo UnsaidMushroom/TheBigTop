@@ -7,6 +7,7 @@ public class RecruitViewerWindow : MonoBehaviour
 {
     public GameObject recruitTemplate;
     public GameObject content;
+    public GameObject RecruitInspectionWindow;
 
     public int hOffset = 20;
     public int vOffset = 20;
@@ -15,6 +16,8 @@ public class RecruitViewerWindow : MonoBehaviour
     public int TemplateSize = 100;
 
     private List<GameObject> population;
+
+    public static Recruit displayedRecruit = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +39,7 @@ public class RecruitViewerWindow : MonoBehaviour
 
         //probably actually want to index so as to track distance...
         List<Recruit> recruits = RecruitManager.Instance.getSortedRecruits("rarity");
+        recruits.Reverse();
         for (int i = 0; i < recruits.Count; i++) 
         {
             GameObject placed = Instantiate(recruitTemplate, content.transform);
@@ -46,6 +50,8 @@ public class RecruitViewerWindow : MonoBehaviour
             placed.GetComponent<RectTransform>().localPosition = new Vector3 (xPos, yPos, 0);
             //placed.GetComponent<RectTransform>().localPosition = new Vector3 (0, 0, 0);
             population.Add(placed);
+
+            placed.GetComponent<RecruitButton>().setRecruit(recruits[i]);
         }
 
         //modify content box
@@ -65,6 +71,13 @@ public class RecruitViewerWindow : MonoBehaviour
         }
         population.Clear();
         gameObject.SetActive(false);
+    }
+
+
+    public void SetDisplayRecruit(Recruit recruit) { displayedRecruit = recruit; }  
+    public void displayRecruit()
+    {
+        Debug.Log("displaying a recruit: " +  displayedRecruit.name);
     }
 
 }

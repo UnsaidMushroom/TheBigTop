@@ -65,6 +65,8 @@ namespace recruits {
             masterRecruitDict.Add("simpleCommon2", new Recruit("simpleCommon2", Rarity.COMMON, 5, "simple water attack", 30));
             masterRecruitDict.Add("simpleCommon3", new Recruit("simpleCommon3", Rarity.COMMON, 5, "simple air attack", 30));
             masterRecruitDict.Add("simpleCommon4", new Recruit("simpleCommon4", Rarity.COMMON, 5, "simple ice attack", 30));
+            masterRecruitDict.Add("err 1", new Recruit("err 1", Rarity.COMMON, 5, "simple ice attack", 30));
+
 
             masterRecruitDict.Add("simpleRare1", new Recruit("simpleRare1", Rarity.RARE, 8, "rare fire attack", 40));
             masterRecruitDict.Add("simpleRare2", new Recruit("simpleRare2", Rarity.RARE, 8, "rare water attack", 40));
