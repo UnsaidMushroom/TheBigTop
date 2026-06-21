@@ -1,11 +1,13 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
 namespace recruits
 {
-    public class Recruit
+    public class Recruit : IComparable<Recruit>
     {
         public static string spritesPath = "Assets/Sprites";
+        public static string sortMode = "none";
 
         //stores data for a given recruit
         public string name;
@@ -95,6 +97,26 @@ namespace recruits
             } 
         }
 
+        public int CompareTo(Recruit other)
+        {
+            if (sortMode == "rarity")
+            {
+                return compareByRarity(other);
+            }
+            else if (sortMode == "time")
+            {
+                return compareByTime(other);
+            }
+            else if (sortMode == "none")
+            {
+                return 0;
+            }
+            else
+            {
+                Debug.Log("invalid sort mode for recruits! \n valid options 'rarity', 'time', 'none'");
+                return 0;
+            }
+        }
 
     }
 }

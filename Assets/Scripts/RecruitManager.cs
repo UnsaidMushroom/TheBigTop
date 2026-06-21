@@ -159,6 +159,15 @@ namespace recruits {
         }
 
 
+
+        public List<Recruit> getSortedRecruits(string sortmode)
+        {
+            Recruit.sortMode = sortmode;
+            recruitList.Sort();
+            return recruitList;
+        }
+
+
     }
 
 
