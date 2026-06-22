@@ -1,23 +1,25 @@
 using System.Net.Sockets;
 using UnityEngine;
 
-public class ProjectileOpposite : Abstr_Damagable
+public class ProjectileTargeting : Abstr_Damagable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Rigidbody2D myBody;
     public float speed = 15f;
     private float timer = 2;
-    public GameObject Target; //should this be a vector 2d? i didn't think projectiles were homing,,, we should just grab the target's position when this is created?
+    public GameObject Target;
+    private Vector3 targetPos;
     void Start()
     {
         if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
-        transform.position = Vector2.MoveTowards(this.transform.position, Target.transform.position, speed * Time.deltaTime);
-        myBody.linearVelocity = transform.up * speed;
+        targetPos = Target.transform.position;
+        
     }
 
-    // Update is called once per frame
+    // Update is called once per frames
     void Update()
     {
+        transform.position = Vector2.MoveTowards(this.transform.position, targetPos, speed * Time.deltaTime);
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
