@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class FriendliesManager : MonoBehaviour
 {
+    public static FriendliesManager Instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -17,5 +18,6 @@ public class FriendliesManager : MonoBehaviour
     public static void KnockOut(GameObject KOed)
     {
         Debug.Log(KOed.GetComponent<RotatingObject>().myRecruit.name + " was KOed!");
+        Destroy(KOed);
     }
 }
