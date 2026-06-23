@@ -1,3 +1,4 @@
+using recruits;
 using System.Drawing;
 using System.Net.Sockets;
 using Unity.VisualScripting;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class RotatingObject : MonoBehaviour
+public class RotatingObject : Abstr_Damagable
 {
     public InputActionAsset actions;
     public InputAction scroll;
@@ -27,6 +28,9 @@ public class RotatingObject : MonoBehaviour
     public float maxActiveAngle;
 
 
+    public Recruit myRecruit;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,12 +41,14 @@ public class RotatingObject : MonoBehaviour
 
     }
 
-    public void applyStartingStuff(Vector3 centerPos, float xRad, float yRad, float angle)
+    public void applyStartingStuff(Vector3 centerPos, float xRad, float yRad, float angle, float minActAng, float maxActAng)
     {
         this.centerPos = centerPos;
         this.xRad = xRad;
         this.yRad = yRad;
         this.angle = angle;
+        this.minActiveAngle = minActAng;
+        this.maxActiveAngle = maxActAng;
     }
 
     // Update is called once per frame
@@ -56,12 +62,30 @@ public class RotatingObject : MonoBehaviour
     public void RotateAmount(float amount)
     {
         angle += amount;
+        angle = angle % 360;
         //destPos.y = Mathf.Sin(Time.deltaTime) * xRad + centerPos.y;
         //destPos.x = Mathf.Cos(Time.deltaTime) * yRad + centerPos.x;
         //transform.position = Vector2.MoveTowards(this.transform.position, destPos, rotateSpeed * Time.deltaTime);
         float xPos = centerPos.x + xRad * Mathf.Cos(angle * Mathf.Deg2Rad);
         float yPos = centerPos.y + yRad * Mathf.Sin(angle * Mathf.Deg2Rad);
         transform.position = new Vector3(xPos, yPos, 0);
+    }
+
+    public override void Damage()
+    {
+        myRecruit.remainingHP -= 5;//really this should be taken from the attack dealing it
+        if (myRecruit.remainingHP <= 0)
+        {
+            if (friendliesTags.Contains(myTag))
+            {
+                FriendliesManager.KnockOut(gameObject);
+            }
+            else if (enemiesTags.Contains(myTag))
+            {
+                EnemiesManager.KnockOut(gameObject);
+            }
+        }
+       
     }
 
 }
