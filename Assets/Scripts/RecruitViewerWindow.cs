@@ -17,12 +17,14 @@ public class RecruitViewerWindow : MonoBehaviour
 
     private List<GameObject> population;
 
-    public static Recruit displayedRecruit = null;
+    public static int selectedIndex;
+    public Queue<GameObject> selecteds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         population = new List<GameObject>();
+        selecteds = new Queue<GameObject>();
         gameObject.SetActive(false);
     }
 
@@ -51,7 +53,7 @@ public class RecruitViewerWindow : MonoBehaviour
             //placed.GetComponent<RectTransform>().localPosition = new Vector3 (0, 0, 0);
             population.Add(placed);
 
-            placed.GetComponent<RecruitButton>().setRecruit(recruits[i]);
+            placed.GetComponent<RecruitButton>().setRecruit(recruits[i],i);
         }
 
         //modify content box
@@ -74,10 +76,17 @@ public class RecruitViewerWindow : MonoBehaviour
     }
 
 
-    public void SetDisplayRecruit(Recruit recruit) { displayedRecruit = recruit; }  
+    //public void SetDisplayRecruit(Recruit recruit) { displayedRecruit = recruit; }  
     public void displayRecruit()
     {
-        Debug.Log("displaying a recruit: " +  displayedRecruit.name);
+        Debug.Log("displaying a recruit: " + population[selectedIndex].GetComponent<RecruitButton>().myRecruit.name);
+        GameObject prev;
+        if (selecteds.TryDequeue(out prev)) { prev.GetComponent<RecruitButton>().UnselectMe(); }
+        selecteds.Enqueue(population[selectedIndex]);
+        population[selectedIndex].GetComponent<RecruitButton>().SelectMe();
+
+
+        //open display window and give it the recruit
     }
 
 }
