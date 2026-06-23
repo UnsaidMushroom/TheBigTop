@@ -78,11 +78,11 @@ public class RotatingObject : Abstr_Damagable
         {
             if (friendliesTags.Contains(myTag))
             {
-                FriendliesManager.KnockOut(gameObject);
+                FriendliesManager.Instance.KnockOut(gameObject);
             }
             else if (enemiesTags.Contains(myTag))
             {
-                EnemiesManager.KnockOut(gameObject);
+                EnemiesManager.Instance.KnockOut(gameObject);
             }
         }
        

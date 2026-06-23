@@ -18,6 +18,7 @@ namespace recruits {
 
         public static RecruitManager Instance;
         public List<Recruit> recruitList;
+        public List<Recruit> battleRecruits;
 
         public Dictionary<string, Recruit> masterRecruitDict;
 
@@ -119,6 +120,7 @@ namespace recruits {
             string debugMsg = "initial recruits: \n";
             foreach (Recruit recruit in recruitList)
             {
+                battleRecruits.Add(recruit);
                 debugMsg += recruit.name + "\n";
             }
             Debug.Log(debugMsg);

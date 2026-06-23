@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    public FriendliesManager friends;
-    public EnemiesManager enemies;
+    public Vector3 wheelPosition;
+    public float xRadius;
+    public float yRadius;
+    public float MinActAngle;
+    public float MaxActAngle;
 
-    public static BattleManager Instance;
 
     public List<Recruit> recruitList;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Instance = this;    
-    }
 
-    // Update is called once per frame
-    void Update()
+
+    public virtual void KnockOut(GameObject KOed)
     {
-        
+        Debug.Log(KOed.GetComponent<RotatingObject>().myRecruit.name + " was KOed!");
+        Destroy(KOed);
     }
 }

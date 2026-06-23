@@ -25,6 +25,8 @@ public class ProjectileTargeting : Abstr_Damagable
         {
             Damage();
         }
+
+        
     }
 
     public override void Damage()
