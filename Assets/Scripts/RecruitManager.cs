@@ -54,7 +54,8 @@ namespace recruits {
             rareRecruits = new List<string>();
             epicRecruits = new List<string>();
             legendaryRecruits = new List<string>();
-            recruitList = new List<Recruit> ();
+            recruitList = new List<Recruit>();
+            battleRecruits = new List<Recruit>();
 
 
             //prepare all recruits!
