@@ -15,6 +15,8 @@ public class Rotator : MonoBehaviour
     void Update()
     {
         //change so if either arrow keys or scroll wheel is being pressed in a direction rotate based on that
-        transform.Rotate(Time.deltaTime, 0, 0);
+        //transform.Rotate(Time.deltaTime, 0, 0);
+        transform.Rotate(0, 0, Time.deltaTime * 5);
+
     }
 }
