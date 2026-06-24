@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using recruits;
+using System.Collections;
 
 public class EnemiesManager : BattleManager
 {
@@ -8,6 +9,7 @@ public class EnemiesManager : BattleManager
 
     public static List<Encounter> encounters;
     public Encounter activeEncounter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,8 +35,11 @@ public class EnemiesManager : BattleManager
     {
         encounters = new List<Encounter>();
 
+        //prepare AttackPatterns for the encounters
+        AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","SpinLeft");
+
         //for now, only placing one encounter, really will have more
-        encounters.Add(new Encounter("default", -1, new List<string>() { "simpleCommon1", "simpleRare1", "simpleEpic1", "simpleCommon2", "simpleCommon1" }));
+        encounters.Add(new Encounter("default", -1, new List<string>() { "simpleCommon1", "simpleRare1", "simpleEpic1", "simpleCommon2", "simpleCommon1" }, simplePattern));
 
     }
 
@@ -53,5 +58,29 @@ public class EnemiesManager : BattleManager
             recruitList.Add(RecruitManager.Instance.GetNewRecruit(rec));
         }
         PlaceRecruits();
+
+        
     }
+
+    //call this at the beginning of battle and whenever the previous finishes. 
+    public void BeginNextMove()
+    {
+        StartCoroutine(activeEncounter.getNextMove());
+
+    }
+
+
+
+    public IEnumerator leftAttack()
+    {
+
+
+        yield return null;
+    }
+
+
+
+
+
+
 }

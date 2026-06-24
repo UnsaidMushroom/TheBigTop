@@ -7,6 +7,7 @@ namespace recruits
     public class Recruit : IComparable<Recruit>
     {
         public static string spritesPath = "Assets/Sprites/";
+        public static string attacksPath = "Assets/Prefabs/";
         public static string sortMode = "none";
 
         //stores data for a given recruit
@@ -18,6 +19,7 @@ namespace recruits
         public int maxHP;
         public int remainingHP;
         public string attackType;
+        private GameObject myAttack;
 
         public float timeLastModified;
 
@@ -41,12 +43,20 @@ namespace recruits
                 sprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritesPath + "missing_sprite" + ".png", typeof(Sprite));
             }
 
-            timeLastModified = Time.time ;
+
+
+            myAttack = (GameObject)AssetDatabase.LoadAssetAtPath(attacksPath + attackType + ".prefab", typeof(GameObject));
+            if (myAttack == null)
+            {
+                myAttack = (GameObject)AssetDatabase.LoadAssetAtPath(attacksPath + "DoNothingAndDie" + ".prefab", typeof(GameObject));
+            }
+
+            timeLastModified = Time.time;
 
 
         }
 
-        
+
 
 
         public Recruit getCopy()

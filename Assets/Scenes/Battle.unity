@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &24580110
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -252,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &25030247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -384,7 +382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &78231124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -547,7 +544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &150487064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -649,7 +645,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &233543802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -751,7 +746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &274418218
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1069,7 +1063,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!114 &568262534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,7 +1187,7 @@ Transform:
   m_GameObject: {fileID: 568262532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.96, y: -2.18, z: 0}
+  m_LocalPosition: {x: -2.96, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1425,7 +1418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &749037283
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1913,7 +1905,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &808783329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2037,7 +2028,7 @@ MonoBehaviour:
   RotatingTemplate: {fileID: 9071055377450334214, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
   scrollSensitivity: 10
   scroll:
-    m_Name: 
+    m_Name: Scroll
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: dff7ab1c-6b98-46f9-af37-e2a0afa307a2
@@ -2197,7 +2188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!60 &1090047624
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2419,7 +2409,7 @@ Transform:
   m_GameObject: {fileID: 1116498100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.94793, y: -2.92991, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2707,7 +2697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!212 &1262349930
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2966,7 +2955,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseScale: {x: 1, y: 1, z: 1}
-  scrollSensitivity: 10
 --- !u!1 &1479821567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3419,6 +3407,63 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!1001 &6587255709652229321
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6296
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21391
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901838597479472, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 316653864368052923, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
+      propertyPath: m_Name
+      value: DoNothingAndDie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34450a07a4edfb348b8ece61610d4a7d, type: 3}
 --- !u!1001 &6953148197990204447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3504,3 +3549,4 @@ SceneRoots:
   - {fileID: 2062313315}
   - {fileID: 958845730}
   - {fileID: 1116498101}
+  - {fileID: 6587255709652229321}

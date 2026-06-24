@@ -30,7 +30,7 @@ public class FriendliesManager : BattleManager
     public void applyScroll()
     {
         float scrollAmt = scroll.ReadValue<Vector2>().y;
-        Debug.Log("Scrolled: " +  scrollAmt + " units");
+        //Debug.Log("Scrolled: " +  scrollAmt + " units");
 
         foreach ( RotatingObject ro in rotatingObjects)
         {
