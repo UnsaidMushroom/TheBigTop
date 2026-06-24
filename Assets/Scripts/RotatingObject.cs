@@ -30,7 +30,7 @@ public class RotatingObject : Abstr_Damagable
 
     public Recruit myRecruit;
 
-
+    /*
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,6 +40,7 @@ public class RotatingObject : Abstr_Damagable
         //yRad = transform.position.y - centerPos.y;
 
     }
+    */
 
     public void applyStartingStuff(Vector3 centerPos, float xRad, float yRad, float angle, float minActAng, float maxActAng)
     {
@@ -86,6 +87,18 @@ public class RotatingObject : Abstr_Damagable
             }
         }
        
+    }
+
+
+
+
+    public void ApplyRecruit(Recruit rec)
+    {
+        myRecruit = rec;
+        //Debug.Log("Recieved recruit: " + rec.name);
+        gameObject.GetComponent<SpriteRenderer>().sprite = myRecruit.sprite;
+        Debug.Log("Recieved recruit: " + rec.name);
+
     }
 
 }

@@ -30,7 +30,7 @@ namespace recruits {
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public void Start()
         {
             if (Instance == null)
             {
@@ -42,7 +42,10 @@ namespace recruits {
             }
             else
             {
-                Destroy(gameObject);
+                if (Instance != this)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 
@@ -171,6 +174,11 @@ namespace recruits {
             Recruit.sortMode = sortmode;
             recruitList.Sort();
             return recruitList;
+        }
+
+        public Recruit GetNewRecruit(string name)
+        {
+            return masterRecruitDict[name].getCopy();
         }
 
 

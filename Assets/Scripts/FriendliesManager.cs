@@ -10,7 +10,7 @@ public class FriendliesManager : BattleManager
     void Start()
     {
         Instance = this;
-        loadFriendlies();
+        LoadFriendlies();
     }
 
     // Update is called once per frame
@@ -24,11 +24,18 @@ public class FriendliesManager : BattleManager
         base.KnockOut(KOed);
     }
 
-    public void loadFriendlies()
-    {
-        recruitList = RecruitManager.Instance.battleRecruits;
-        //place the recruits
+    public void LoadFriendlies()
+    { 
+        if (RecruitManager.Instance == null) //catch edge case
+        {
+            FindFirstObjectByType<RecruitManager>().Start(); // force recruit manager to load first
+        }
 
+        recruitList = RecruitManager.Instance.battleRecruits;
+
+        //place the rotating objects
+        PlaceRecruits();
+        
     }
 
 

@@ -14,6 +14,10 @@ public abstract class Abstr_Damagable : MonoBehaviour
     void Start()
     {
         myTag = gameObject.tag;
+        if (friendliesTags == null || enemiesTags == null)
+        {
+            initializeSets();
+        }
     }
 
     // Update is called once per frame

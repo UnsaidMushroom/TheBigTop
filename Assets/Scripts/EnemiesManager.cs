@@ -40,11 +40,18 @@ public class EnemiesManager : BattleManager
 
     public void getNewEncounter()
     {
+        if (RecruitManager.Instance == null) //catch edge case
+        {
+            FindFirstObjectByType<RecruitManager>().Start(); // force recruit manager to load first
+        }
+
         int r = Random.Range(0, encounters.Count);
         activeEncounter = encounters[r];
-        for (int i = 0; i < 5;  i++)
+        recruitList = new List<Recruit>();
+        foreach(string rec in activeEncounter.encounterRecs)
         {
-            //place the five recruits from encounters[r] in enemy positions
+            recruitList.Add(RecruitManager.Instance.GetNewRecruit(rec));
         }
+        PlaceRecruits();
     }
 }
