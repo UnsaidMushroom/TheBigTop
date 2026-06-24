@@ -1,16 +1,10 @@
 using recruits;
-using System.Drawing;
-using System.Net.Sockets;
-using Unity.VisualScripting;
-using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class RotatingObject : Abstr_Damagable
 {
-    public InputActionAsset actions;
-    public InputAction scroll;
+    
 
     public float rotateSpeed = 2f;
 
@@ -26,6 +20,10 @@ public class RotatingObject : Abstr_Damagable
     //the angles between which the object is active 
     public float minActiveAngle;
     public float maxActiveAngle;
+
+    public Color activeColor = Color.white;
+    public Color inactiveColor = Color.darkGray;
+    public SpriteRenderer myRenderer;
 
 
     public Recruit myRecruit;
@@ -50,6 +48,9 @@ public class RotatingObject : Abstr_Damagable
         this.angle = angle;
         this.minActiveAngle = minActAng;
         this.maxActiveAngle = maxActAng;
+
+        myRenderer = gameObject.GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -57,39 +58,54 @@ public class RotatingObject : Abstr_Damagable
     {
 
         //for now, set rotation
-        RotateAmount(rotateSpeed * Time.deltaTime);
+        //RotateAmount(rotateSpeed * Time.deltaTime);
+
+        //applyColor();
+
     }
 
     public void RotateAmount(float amount)
     {
-        angle += amount;
+        angle += rotateSpeed * amount * Time.deltaTime;
         angle = angle % 360;
+        angle = (angle < 0) ? angle + 360 : angle;
         //destPos.y = Mathf.Sin(Time.deltaTime) * xRad + centerPos.y;
         //destPos.x = Mathf.Cos(Time.deltaTime) * yRad + centerPos.x;
         //transform.position = Vector2.MoveTowards(this.transform.position, destPos, rotateSpeed * Time.deltaTime);
         float xPos = centerPos.x + xRad * Mathf.Cos(angle * Mathf.Deg2Rad);
         float yPos = centerPos.y + yRad * Mathf.Sin(angle * Mathf.Deg2Rad);
         transform.position = new Vector3(xPos, yPos, 0);
+        applyColor();
     }
+
+    public void applyColor()
+    {
+        myRenderer.color = (inActiveAngle()) ? activeColor : inactiveColor;
+    }
+
 
     public override void Damage()
     {
-        myRecruit.remainingHP -= 5;//really this should be taken from the attack dealing it
-        if (myRecruit.remainingHP <= 0)
+        if (inActiveAngle())
         {
-            if (friendliesTags.Contains(myTag))
+            myRecruit.remainingHP -= 5;//really this should be taken from the attack dealing it
+            if (myRecruit.remainingHP <= 0)
             {
-                FriendliesManager.Instance.KnockOut(gameObject);
+                if (friendliesTags.Contains(myTag))
+                {
+                    FriendliesManager.Instance.KnockOut(gameObject);
+                }
+                else if (enemiesTags.Contains(myTag))
+                {
+                    EnemiesManager.Instance.KnockOut(gameObject);
+                }
             }
-            else if (enemiesTags.Contains(myTag))
-            {
-                EnemiesManager.Instance.KnockOut(gameObject);
-            }
+            //apply damaged effects
         }
        
     }
 
-
+    public bool inActiveAngle() => (angle < maxActiveAngle && angle > minActiveAngle);
 
 
     public void ApplyRecruit(Recruit rec)

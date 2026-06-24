@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
 
 
     public List<Recruit> recruitList;
+    public List<RotatingObject> rotatingObjects;
     public GameObject RotatingTemplate;
 
 
@@ -32,6 +33,9 @@ public class BattleManager : MonoBehaviour
             float angle = forwardAngle + spacing + spacing*2*i;
             r.applyStartingStuff(wheelPosition,xRadius,yRadius,angle,MinActAngle,MaxActAngle);
             r.ApplyRecruit(recruitList[i]);
+
+            rotatingObjects.Add(r);
+            r.RotateAmount(0);
 
         }
     }

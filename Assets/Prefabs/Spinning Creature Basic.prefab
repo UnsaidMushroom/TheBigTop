@@ -130,23 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bc5deb9c6a75c4ca7f2a730fe56df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: {fileID: 0}
-  scroll:
-    m_Name: Scroll
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ab9484d6-5725-48bc-9edb-cc76c14ddc3b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  rotateSpeed: 30
+  rotateSpeed: 1000
   centerPos: {x: -1, y: -4.5, z: 0}
   xRad: 5
   yRad: 1.5
   angle: 414
   minActiveAngle: 18
   maxActiveAngle: 162
+  activeColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveColor: {r: 0.6627451, g: 0.6627451, b: 0.6627451, a: 1}
+  myRenderer: {fileID: 0}
 --- !u!114 &2712573478826958362
 MonoBehaviour:
   m_ObjectHideFlags: 0
