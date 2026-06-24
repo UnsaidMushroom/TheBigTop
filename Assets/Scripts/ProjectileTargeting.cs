@@ -19,7 +19,7 @@ public class ProjectileTargeting : Abstr_Damagable
     // Update is called once per frames
     void Update()
     {
-        transform.position = Vector2.MoveTowards(this.transform.position, targetPos, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, targetPos*2, speed * Time.deltaTime);
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
