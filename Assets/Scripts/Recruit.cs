@@ -10,6 +10,8 @@ namespace recruits
         public static string attacksPath = "Assets/Prefabs/";
         public static string sortMode = "none";
 
+        public const float levelUpCoefficient = 1.05f;
+
         //stores data for a given recruit
         public string name;
         public Sprite sprite;
@@ -18,6 +20,7 @@ namespace recruits
         public string attackDescription;
         public int maxHP;
         public int remainingHP;
+        public int level;
         public string attackType;
         private GameObject myAttack;
 
@@ -25,13 +28,14 @@ namespace recruits
 
 
 
-        public Recruit(string name, Rarity rarity, int damage, string description, int maxHP, string type = "default")
+        public Recruit(string name, Rarity rarity, int damage, string description, int maxHP, string type = "default", int level = 1)
         {
             this.name = name;
             this.rarity = rarity;
             this.damage = damage;
             this.attackDescription = description;
             this.maxHP = maxHP;
+            this.level = level;
             this.remainingHP = maxHP;
             this.attackType = type;
 
@@ -61,7 +65,7 @@ namespace recruits
 
         public Recruit getCopy()
         {
-            return new Recruit(name, rarity, damage, attackDescription, maxHP, attackType);
+            return new Recruit(name, rarity, damage, attackDescription, maxHP, attackType, level);
         }
 
         public int compareByRarity(Recruit other)
@@ -131,6 +135,18 @@ namespace recruits
                 Debug.Log("invalid sort mode for recruits! \n valid options 'rarity', 'time', 'none'");
                 return 0;
             }
+        }
+
+        public void levelUp(int n)
+        {
+            level += n;
+            for (int i = 0; i < n; i++)
+            {
+                maxHP = Mathf.CeilToInt(maxHP * levelUpCoefficient);
+                damage = Mathf.CeilToInt(damage *  levelUpCoefficient);
+
+            }
+
         }
 
     }
