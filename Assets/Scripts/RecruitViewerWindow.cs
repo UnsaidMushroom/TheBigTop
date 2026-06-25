@@ -199,6 +199,7 @@ public class RecruitViewerWindow : MonoBehaviour
 
     public void SellSelected()
     {
+        
         GameObject go = selecteds.Dequeue();
 
         Recruit r = go.GetComponent<RecruitButton>().myRecruit;

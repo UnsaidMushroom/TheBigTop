@@ -86,9 +86,14 @@ public class RotatingObject : Abstr_Damagable
 
     public override void Damage()
     {
+        Damage(5);
+    }
+
+    public override void Damage(int dmg)
+    {
         if (inActiveAngle())
         {
-            myRecruit.remainingHP -= 5;//really this should be taken from the attack dealing it
+            myRecruit.remainingHP -= dmg;//really this should be taken from the attack dealing it
             if (myRecruit.remainingHP <= 0)
             {
                 if (friendliesTags.Contains(myTag))
@@ -102,7 +107,6 @@ public class RotatingObject : Abstr_Damagable
             }
             //apply damaged effects
         }
-       
     }
 
     public bool inActiveAngle() => (angle < maxActiveAngle && angle > minActiveAngle);

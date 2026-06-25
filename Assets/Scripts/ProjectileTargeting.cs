@@ -1,7 +1,7 @@
 using System.Net.Sockets;
 using UnityEngine;
 
-public class ProjectileTargeting : Abstr_Damagable
+public class ProjectileTargeting : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Rigidbody2D myBody;
@@ -33,4 +33,6 @@ public class ProjectileTargeting : Abstr_Damagable
     {
         Destroy(gameObject);
     }
+
+    
 }

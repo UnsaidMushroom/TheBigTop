@@ -28,6 +28,8 @@ public abstract class Abstr_Damagable : MonoBehaviour
 
     public abstract void Damage();
 
+    public abstract void Damage(int dmg);
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (myTag == null) { myTag = gameObject.tag; }
@@ -35,13 +37,24 @@ public abstract class Abstr_Damagable : MonoBehaviour
         string otherTag = collision.gameObject.tag;
         Debug.Log("collision! me: " + myTag + "; other: " + otherTag);
 
+        Abstr_Projectile ap = collision.gameObject.GetComponent<Abstr_Projectile>();
+
         if (!friendliesTags.Contains(myTag) && friendliesTags.Contains(otherTag))
         {
-            Damage();
+            if (ap != null)
+            {
+                Damage(ap.damage);
+            }
+            else { Damage(); }
+
         }
         if (!enemiesTags.Contains(myTag) && enemiesTags.Contains(otherTag))
         {
-            Damage();
+            if (ap != null)
+            {
+                Damage(ap.damage);
+            }
+            else { Damage(); }
         }
     }
 

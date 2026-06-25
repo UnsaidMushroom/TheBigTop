@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileTwisting : Abstr_Damagable
+public class ProjectileTwisting : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Rigidbody2D myBody;
