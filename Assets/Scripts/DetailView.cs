@@ -10,6 +10,7 @@ public class DetailView : MonoBehaviour
     public TextMeshProUGUI MaxHPField;
     public TextMeshProUGUI DamageField;
     public TextMeshProUGUI DescriptionField;
+    public GameObject SellButton;
     public TextMeshProUGUI SellText;
 
 
@@ -21,5 +22,13 @@ public class DetailView : MonoBehaviour
         DamageField.text = "Damage: " + r.damage;
         DescriptionField.text = r.attackDescription;
         SellText.text = "Sell - $" + r.sellValue();
+        if (RecruitManager.Instance.recruitList.Count > 5)
+        {
+            SellButton.SetActive(true);
+        }
+        else
+        {
+            SellButton.SetActive(false);
+        }
     }
 }
