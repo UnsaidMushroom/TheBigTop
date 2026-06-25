@@ -2,6 +2,7 @@ using UnityEngine;
 using recruits;
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class RecruitViewerWindow : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class RecruitViewerWindow : MonoBehaviour
 
     public GameObject detailViewer;
     public GameObject battleViewer;
+    public GameObject StartBattleButton;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,6 +59,8 @@ public class RecruitViewerWindow : MonoBehaviour
         gameObject.SetActive(true);
         detailViewer.SetActive(false);
         battleViewer.SetActive((currentMode=="battlePrep"));
+        StartBattleButton.SetActive(false);
+
 
 
         //probably actually want to index so as to track distance...
@@ -120,6 +124,8 @@ public class RecruitViewerWindow : MonoBehaviour
         gameObject.SetActive(false);
         detailViewer.SetActive(false);
         battleViewer.SetActive(false);
+        StartBattleButton.SetActive(false);
+
     }
 
 
@@ -142,8 +148,10 @@ public class RecruitViewerWindow : MonoBehaviour
                 selecteds.Dequeue().GetComponent<RecruitButton>().UnselectMe();
             }
         }
+        if (selecteds.Contains(population[selectedIndex])) { return; } //if this already chosen, ignore it...
 
-        //enqueu
+
+        //enqueue
         selecteds.Enqueue(population[selectedIndex]);
         population[selectedIndex].GetComponent<RecruitButton>().SelectMe();
 
@@ -166,9 +174,26 @@ public class RecruitViewerWindow : MonoBehaviour
         if (currentMode == "battlePrep" && selecteds.Count >= 5)
         {
             Debug.Log("Ready for battle!");
+            StartBattleButton.SetActive(true);
         }
 
         //open display window and give it the recruit
+    }
+
+    public void beginBattle()
+    {
+        if (currentMode != "battlePrep" || selecteds.Count < 5)
+        {
+            Debug.Log("went to start battle, but something was wrong...");
+            return;
+        }
+        Debug.Log("Begninning battle!");
+        RecruitManager.Instance.battleRecruits.Clear();
+        for(int i = 0; i < 5; i++)
+        {
+            RecruitManager.Instance.battleRecruits.Add(selecteds.Dequeue().GetComponent<RecruitButton>().myRecruit);
+        }
+        SceneManager.LoadScene("Battle");
     }
 
 }
