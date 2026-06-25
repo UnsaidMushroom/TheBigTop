@@ -89,7 +89,7 @@ namespace recruits
             else
             {
                 //sort by name
-                return name.CompareTo(other.name);
+                return compareByLevel(other);
                 
             }
 
@@ -115,6 +115,26 @@ namespace recruits
                 return name.CompareTo(other.name);
             } 
         }
+        public int compareByLevel(Recruit other)
+        {
+            //returns -1 if this was modified less recently, 1 if more recent
+            if (other == null)
+            {
+                return 1;
+            }
+            else if (level > other.level)
+            {
+                return 1;
+            }
+            else if (level < other.level)
+            {
+                return -1;
+            }
+            else
+            { // unlikely to duplicate time exactly, 
+                return name.CompareTo(other.name);
+            }
+        }
 
         public int CompareTo(Recruit other)
         {
@@ -125,6 +145,10 @@ namespace recruits
             else if (sortMode == "time")
             {
                 return compareByTime(other);
+            }
+            else if (sortMode == "level")
+            {
+                return compareByLevel(other);
             }
             else if (sortMode == "none")
             {

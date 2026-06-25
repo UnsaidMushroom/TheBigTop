@@ -28,7 +28,7 @@ public class RecruitButton : Button
 
 
         Debug.Log("populating button: " +  recruit.name);
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = recruit.name;
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = recruit.name + "\nlv" + recruit.level;
         selectedBox.SetActive(false);
 
         //Button btn = this.GetComponent<Button>();

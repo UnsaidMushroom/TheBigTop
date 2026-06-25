@@ -17,8 +17,13 @@ public class RecruitViewerWindow : MonoBehaviour
 
     private List<GameObject> population;
 
+    public string sortmode = "rarity";
+    public string currentMode;
     public static int selectedIndex;
     public Queue<GameObject> selecteds;
+
+    public GameObject detailViewer;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,13 +39,26 @@ public class RecruitViewerWindow : MonoBehaviour
         
     }
 
+    public void viewRecruitsStandard()
+    {
+        currentMode = "simple";
+        populate();
+    }
+
+    public void viewRecruitsForBattle()
+    {
+        currentMode = "battlePrep";
+        populate();
+    }
 
     public void populate()
     {
         gameObject.SetActive(true);
+        detailViewer.SetActive(false);
+
 
         //probably actually want to index so as to track distance...
-        List<Recruit> recruits = RecruitManager.Instance.getSortedRecruits("rarity");
+        List<Recruit> recruits = RecruitManager.Instance.getSortedRecruits(sortmode);
         recruits.Reverse();
         for (int i = 0; i < recruits.Count; i++) 
         {
@@ -64,6 +82,30 @@ public class RecruitViewerWindow : MonoBehaviour
 
     }
 
+    public void changeSortMode()
+    {
+        if (sortmode == "rarity")
+        {
+            sortmode = "level";
+        }
+        else if (sortmode == "level")
+        {
+            sortmode = "time";
+        }
+        else if (sortmode == "time")
+        {
+            sortmode = "rarity";
+        }
+        else
+        {
+            Debug.Log("unknown sortmode...");
+            sortmode = "rarity";
+        }
+
+        hide();
+        populate();
+    }
+
     public void hide()
     {
         int max = population.Count;
@@ -72,7 +114,9 @@ public class RecruitViewerWindow : MonoBehaviour
             Destroy(population[i]);
         }
         population.Clear();
+        selecteds.Clear();
         gameObject.SetActive(false);
+        detailViewer.SetActive(false);
     }
 
 
@@ -80,10 +124,32 @@ public class RecruitViewerWindow : MonoBehaviour
     public void displayRecruit()
     {
         Debug.Log("displaying a recruit: " + population[selectedIndex].GetComponent<RecruitButton>().myRecruit.name);
-        GameObject prev;
-        if (selecteds.TryDequeue(out prev)) { prev.GetComponent<RecruitButton>().UnselectMe(); }
+        //GameObject prev;
+        
+        //simple mode
+        if (selecteds.Count > 0 && currentMode == "simple") 
+        {
+            selecteds.Dequeue().GetComponent<RecruitButton>().UnselectMe(); 
+        }
+        //battleMode
+        if (selecteds.Count >=5 && currentMode == "battlePrep")
+        {
+            if (!selecteds.Contains(population[selectedIndex]))
+            {
+                selecteds.Dequeue().GetComponent<RecruitButton>().UnselectMe();
+            }
+        }
+
+        //enqueu
         selecteds.Enqueue(population[selectedIndex]);
         population[selectedIndex].GetComponent<RecruitButton>().SelectMe();
+
+        //apply changes
+        if (currentMode == "simple")
+        {
+            detailViewer.SetActive(true);
+            detailViewer.GetComponent<DetailView>().applyRecruit(population[selectedIndex].GetComponent<RecruitButton>().myRecruit);
+        }
 
 
         //open display window and give it the recruit
