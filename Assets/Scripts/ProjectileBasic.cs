@@ -6,7 +6,7 @@ public class ProjectileBasic : Abstr_Projectile
     public Rigidbody2D myBody;
     public float speed = 15f;
     private float timer = 2;
-    void Start()
+    protected override void Start()
     {
         if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
         myBody.linearVelocity = transform.up * speed;

@@ -9,7 +9,7 @@ public class ProjectileTargeting : Abstr_Projectile
     private float timer = 2;
     public GameObject Target;
     private Vector3 targetPos;
-    void Start()
+    protected override void Start()
     {
         if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
         targetPos = Target.transform.position;

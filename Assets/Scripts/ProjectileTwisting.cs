@@ -9,7 +9,7 @@ public class ProjectileTwisting : Abstr_Projectile
     private float timer = 7.5f;
     private Vector3 initPos;
     public float angle;
-    void Start()
+    protected override void Start()
     {
         if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
         initPos = transform.position;
