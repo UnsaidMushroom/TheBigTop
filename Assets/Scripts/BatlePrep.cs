@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BattlePrep : MonoBehaviour
 {
-
+    public Sprite blankSprite;
     public Image img1;
     public Image img2;
     public Image img3;
@@ -23,11 +23,11 @@ public class BattlePrep : MonoBehaviour
 
     public void clearRecruits()
     {
-        img1.sprite = null;
-        img2.sprite = null;
-        img3.sprite = null;
-        img4.sprite = null;
-        img5.sprite = null;
+        img1.sprite = blankSprite;
+        img2.sprite = blankSprite;
+        img3.sprite = blankSprite;
+        img4.sprite = blankSprite;
+        img5.sprite = blankSprite;
     }
 
 

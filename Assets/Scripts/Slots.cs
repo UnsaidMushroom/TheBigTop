@@ -16,6 +16,8 @@ public class Slots : MonoBehaviour
     public Sprite BellSprite;
     public Sprite SevenSprite;
 
+    public int costPerSpin = 7;
+
     public enum rollOption
     {
         CHERRY,
@@ -38,6 +40,9 @@ public class Slots : MonoBehaviour
 
     public void spinMachine()
     {
+
+        if (!MoneyManager.instance.SpendFunds(costPerSpin)) { return; } //abort if not enough funds
+
         rollOption[] rolls = new rollOption[3];
 
 

@@ -196,4 +196,18 @@ public class RecruitViewerWindow : MonoBehaviour
         SceneManager.LoadScene("Battle");
     }
 
+
+    public void SellSelected()
+    {
+        GameObject go = selecteds.Dequeue();
+
+        Recruit r = go.GetComponent<RecruitButton>().myRecruit;
+        MoneyManager.instance.addFunds(r.sellValue());
+        RecruitManager.Instance.removeRecruit(r);
+        hide();
+        populate();
+
+
+    }
+
 }

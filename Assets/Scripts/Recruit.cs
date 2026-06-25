@@ -173,5 +173,10 @@ namespace recruits
 
         }
 
+        public int sellValue()
+        {
+            return 2 + (2 * (int) rarity) + level;
+        }
+
     }
 }

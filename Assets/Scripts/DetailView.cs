@@ -10,6 +10,7 @@ public class DetailView : MonoBehaviour
     public TextMeshProUGUI MaxHPField;
     public TextMeshProUGUI DamageField;
     public TextMeshProUGUI DescriptionField;
+    public TextMeshProUGUI SellText;
 
 
     public void applyRecruit(Recruit r)
@@ -19,6 +20,6 @@ public class DetailView : MonoBehaviour
         MaxHPField.text = "MaxHP:" + r.maxHP;
         DamageField.text = "Damage: " + r.damage;
         DescriptionField.text = r.attackDescription;
-
+        SellText.text = "Sell - $" + r.sellValue();
     }
 }

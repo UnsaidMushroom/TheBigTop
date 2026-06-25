@@ -182,6 +182,11 @@ namespace recruits {
             return masterRecruitDict[name].getCopy();
         }
 
+        public void removeRecruit(Recruit r)
+        {
+            recruitList.Remove(r);
+        }
+
 
        
 
