@@ -28,20 +28,18 @@ public class RotatingObject : Abstr_Damagable
 
     public Recruit myRecruit;
 
-    /*
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        //centerPos.x = -1;
-        //centerPos.y = -5;
-        //xRad = transform.position.x - centerPos.x;
-        //yRad = transform.position.y - centerPos.y;
+        base.Start();
 
     }
-    */
+    
 
     public void applyStartingStuff(Vector3 centerPos, float xRad, float yRad, float angle, float minActAng, float maxActAng)
     {
+        
         this.centerPos = centerPos;
         this.xRad = xRad;
         this.yRad = yRad;
@@ -119,6 +117,26 @@ public class RotatingObject : Abstr_Damagable
         gameObject.GetComponent<SpriteRenderer>().sprite = myRecruit.sprite;
         Debug.Log("Recieved recruit: " + rec.name);
 
+    }
+
+
+    public void Attack()
+    {
+        if (inActiveAngle())
+        {
+            GameObject go = Instantiate(myRecruit.getAttack(), transform.position, Quaternion.identity);
+            Abstr_Projectile ap = go.GetComponent<Abstr_Projectile>();
+            ap.setDamage(myRecruit.damage);
+            ap.setTag(myTag);
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (myTag == "Friendly")
+        {
+            Attack();
+        }
     }
 
 }

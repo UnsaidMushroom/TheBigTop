@@ -3,12 +3,11 @@ using UnityEngine;
 public class ProjectileBasic : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Rigidbody2D myBody;
     public float speed = 15f;
     private float timer = 2;
     protected override void Start()
     {
-        if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
+        base.Start();
         myBody.linearVelocity = transform.up * speed;
     }
 

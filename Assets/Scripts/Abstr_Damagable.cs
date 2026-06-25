@@ -11,7 +11,7 @@ public abstract class Abstr_Damagable : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         myTag = gameObject.tag;
         if (friendliesTags == null || enemiesTags == null)

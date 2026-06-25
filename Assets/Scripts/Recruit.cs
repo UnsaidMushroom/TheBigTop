@@ -178,5 +178,11 @@ namespace recruits
             return 2 + (2 * (int) rarity) + level;
         }
 
+        public GameObject getAttack()
+        {
+            return myAttack;
+        }
+
+
     }
 }

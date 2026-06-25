@@ -2,11 +2,14 @@ using UnityEngine;
 
 public abstract class Abstr_Projectile : Abstr_Damagable
 {
+    public Rigidbody2D myBody;
+
     public int damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected virtual void Start()
+    protected override void Start()
     {
-        //if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
+        base.Start();
+        if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
 
     }
 
@@ -16,10 +19,7 @@ public abstract class Abstr_Projectile : Abstr_Damagable
         
     }
 
-    public void setDamage(int amt)
-    {
-        damage = amt;
-    }
+    
 
     public override void Damage()
     {
@@ -29,4 +29,14 @@ public abstract class Abstr_Projectile : Abstr_Damagable
     {
         Damage();
     }
+
+    public void setDamage(int amt)
+    {
+        damage = amt;
+    }
+    public void setTag(string tag)
+    {
+        gameObject.tag = tag;
+    }
+
 }

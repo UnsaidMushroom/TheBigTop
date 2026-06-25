@@ -4,14 +4,13 @@ using UnityEngine;
 public class ProjectileTargeting : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Rigidbody2D myBody;
     public float speed = 15f;
     private float timer = 2;
     public GameObject Target;
     private Vector3 targetPos;
     protected override void Start()
     {
-        if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
+        base.Start();
         targetPos = Target.transform.position;
         
     }

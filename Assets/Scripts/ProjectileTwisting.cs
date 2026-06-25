@@ -3,7 +3,6 @@ using UnityEngine;
 public class ProjectileTwisting : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Rigidbody2D myBody;
     public float speed = 1f;
     public float rotSpeed = 250f;
     private float timer = 7.5f;
@@ -11,7 +10,7 @@ public class ProjectileTwisting : Abstr_Projectile
     public float angle;
     protected override void Start()
     {
-        if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
+        base.Start();
         initPos = transform.position;
     }
 
