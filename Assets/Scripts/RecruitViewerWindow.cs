@@ -23,6 +23,7 @@ public class RecruitViewerWindow : MonoBehaviour
     public Queue<GameObject> selecteds;
 
     public GameObject detailViewer;
+    public GameObject battleViewer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,6 +56,7 @@ public class RecruitViewerWindow : MonoBehaviour
     {
         gameObject.SetActive(true);
         detailViewer.SetActive(false);
+        battleViewer.SetActive((currentMode=="battlePrep"));
 
 
         //probably actually want to index so as to track distance...
@@ -117,6 +119,7 @@ public class RecruitViewerWindow : MonoBehaviour
         selecteds.Clear();
         gameObject.SetActive(false);
         detailViewer.SetActive(false);
+        battleViewer.SetActive(false);
     }
 
 
@@ -150,7 +153,20 @@ public class RecruitViewerWindow : MonoBehaviour
             detailViewer.SetActive(true);
             detailViewer.GetComponent<DetailView>().applyRecruit(population[selectedIndex].GetComponent<RecruitButton>().myRecruit);
         }
+        if (currentMode == "battlePrep")
+        {
+            battleViewer.GetComponent<BattlePrep>().clearRecruits();
+            foreach (GameObject go in selecteds)
+            {
+                battleViewer.GetComponent<BattlePrep>().applyRecruit(go.GetComponent<RecruitButton>().myRecruit);
+            }
+        }
 
+
+        if (currentMode == "battlePrep" && selecteds.Count >= 5)
+        {
+            Debug.Log("Ready for battle!");
+        }
 
         //open display window and give it the recruit
     }
