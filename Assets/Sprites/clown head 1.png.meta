@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f55cfb16cb1548f4ab8dfbcd187b0f18
+guid: 0f147f77a01e02a4c96a292d9db080c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5533939229015668419
-    second: Seal_Circus_0
+      213: -8943167564008802345
+    second: clown head 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Seal_Circus_0
+      name: clown head 1_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 33
-        height: 34
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d390ced579f7333b0800000000000000
-      internalID: -5533939229015668419
+      spriteID: 7d7b574cb7c73e380800000000000000
+      internalID: -8943167564008802345
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Seal_Circus_0: -5533939229015668419
+      clown head 1_0: -8943167564008802345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
