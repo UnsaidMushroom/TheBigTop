@@ -11,6 +11,10 @@ public class ProjectileTwisting : Abstr_Projectile
     protected override void Start()
     {
         base.Start();
+        if (this.CompareTag("Enemy"))
+        {
+            speed = -speed;
+        }
         initPos = transform.position;
     }
 

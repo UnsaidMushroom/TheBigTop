@@ -8,6 +8,10 @@ public class ProjectileBasic : Abstr_Projectile
     protected override void Start()
     {
         base.Start();
+        if(this.CompareTag("Enemy"))
+        {
+            speed = -speed;
+        }
         myBody.linearVelocity = transform.up * speed;
     }
 
