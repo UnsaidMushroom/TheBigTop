@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using recruits;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EnemiesManager : BattleManager
 {
@@ -16,6 +18,10 @@ public class EnemiesManager : BattleManager
     public const float fifthWheel = 360 / 5f;
     public const float rotDegPerSecond = 50;
 
+    public int combatReward = 0;
+    public TextMeshProUGUI rewardtext1;
+    public TextMeshProUGUI rewardtext2;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +32,10 @@ public class EnemiesManager : BattleManager
         }
         getNewEncounter();
         layersDeep = 0;
+        BattleActive = true;
+        combatReward = 0;
+        ILostScreen.SetActive(false);
+
         BeginNextMove();
     }
 
@@ -37,6 +47,37 @@ public class EnemiesManager : BattleManager
     public override void KnockOut(GameObject KOed)
     {
         base.KnockOut(KOed);
+    }
+
+
+    public override void checkEliminated()
+    {
+        if (rotatingObjects.Count <= 0)
+        {
+            foreach (Recruit r in recruitList)
+            {
+                combatReward += r.sellValue();
+            }
+            MoneyManager.addFundsS(combatReward);
+
+            rewardtext1.text = "Reward - $" + combatReward + "\nLevelUp!";
+            rewardtext2.text = rewardtext1.text;
+
+            Debug.Log("you have beaten the opponent!!!");
+            BattleActive = false;
+
+            ILostScreen.SetActive(true);
+            foreach (Recruit rec in RecruitManager.Instance.battleRecruits)
+            {
+                rec.levelUp(1);
+            }
+        }
+
+    }
+
+    public void ProceedToCarousel()
+    {
+        SceneManager.LoadScene("Carousel");
     }
 
     public void LoadEncounters()
@@ -52,7 +93,7 @@ public class EnemiesManager : BattleManager
         AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","spinLeft");
 
         //for now, only placing one encounter, really will have more
-        encounters.Add(new Encounter("default", -1, new List<string>() { "simpleCommon1", "simpleRare1", "simpleEpic1", "simpleCommon2", "simpleCommon1" }, simplePattern));
+        encounters.Add(new Encounter("default", -1, new List<string>() { "Leon", "Leon", "Leon", "Leon", "Leon" }, simplePattern));
 
     }
 
@@ -71,6 +112,7 @@ public class EnemiesManager : BattleManager
             recruitList.Add(RecruitManager.Instance.GetNewRecruit(rec));
         }
         PlaceRecruits();
+        
 
         
     }
@@ -78,7 +120,7 @@ public class EnemiesManager : BattleManager
     //call this at the beginning of battle and whenever the previous finishes. 
     public void BeginNextMove()
     {
-        if (layersDeep == 0)
+        if (layersDeep == 0 && BattleActive)
         {
             StartCoroutine(activeEncounter.getNextMove());
         }
@@ -94,7 +136,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack);
-        getActive("left").Attack();
+        getActive("left")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack);
 
         layersDeep--;
@@ -108,7 +150,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack);
-        getActive("right").Attack();
+        getActive("right")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack);
 
         layersDeep--;
@@ -121,7 +163,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack);
-        getActive("rand").Attack();
+        getActive("rand")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack);
 
         layersDeep--;
@@ -135,7 +177,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack/2);
-        getActive("left").Attack();
+        getActive("left")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack/2);
 
         layersDeep--;
@@ -149,7 +191,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack / 2);
-        getActive("right").Attack();
+        getActive("right")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack / 2);
 
         layersDeep--;
@@ -162,7 +204,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack / 2);
-        getActive("rand").Attack();
+        getActive("rand")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack / 2);
 
         layersDeep--;
@@ -176,7 +218,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack * 2);
-        getActive("left").Attack();
+        getActive("left")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack * 2);
 
         layersDeep--;
@@ -190,7 +232,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack * 2);
-        getActive("right").Attack();
+        getActive("right")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack * 2);
 
         layersDeep--;
@@ -203,7 +245,7 @@ public class EnemiesManager : BattleManager
         layersDeep++;
 
         yield return new WaitForSeconds(halftimePerAttack * 2);
-        getActive("rand").Attack();
+        getActive("rand")?.Attack();
         yield return new WaitForSeconds(halftimePerAttack * 2);
 
         layersDeep--;

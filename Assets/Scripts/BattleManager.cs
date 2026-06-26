@@ -15,12 +15,22 @@ public class BattleManager : MonoBehaviour
     public List<RotatingObject> rotatingObjects;
     public GameObject RotatingTemplate;
 
+    public static bool BattleActive = false;
+
+    public GameObject ILostScreen;
+
 
     public virtual void KnockOut(GameObject KOed)
     {
         Debug.Log(KOed.GetComponent<RotatingObject>().myRecruit.name + " was KOed!");
         rotatingObjects.Remove(KOed.GetComponent<RotatingObject>());
         Destroy(KOed);
+        checkEliminated();
+    }
+
+    public virtual void checkEliminated()
+    {
+        Debug.Log("battleManager called, but needed friendly or enemy");
     }
 
     public void PlaceRecruits()
@@ -46,6 +56,11 @@ public class BattleManager : MonoBehaviour
     {
         RotatingObject closestLeft = null;
         RotatingObject closestRight = null;
+        if (LorR != "left" &&  LorR != "right")
+        {
+            int r = Mathf.FloorToInt(Random.value * 2);
+            LorR = (r < 1) ? "left" : "right";
+        }
         foreach (RotatingObject ro in rotatingObjects)
         {
             if (ro.inActiveAngle())
@@ -70,8 +85,8 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            int r = Mathf.FloorToInt(Random.value * 2);
-            return (r <1)?closestRight:closestLeft ;
+            Debug.Log("something went wrong with the getActive Method");
+            return null;
         }
     }
 

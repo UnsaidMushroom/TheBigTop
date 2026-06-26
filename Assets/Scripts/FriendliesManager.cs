@@ -2,6 +2,7 @@ using recruits;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class FriendliesManager : BattleManager
 {
@@ -17,7 +18,9 @@ public class FriendliesManager : BattleManager
     {
         Instance = this;
         LoadFriendlies();
+        ILostScreen.SetActive(false);
         scroll = InputSystem.actions.FindAction("Player/Scroll");
+        BattleActive = true;
     }
 
     // Update is called once per frame
@@ -41,6 +44,25 @@ public class FriendliesManager : BattleManager
     public override void KnockOut(GameObject KOed)
     {
         base.KnockOut(KOed);
+    }
+
+    public override void checkEliminated()
+    {
+        if (rotatingObjects.Count <= 0)
+        {
+            Debug.Log("You have lost !!!");
+            BattleActive = false;
+            ILostScreen.SetActive(true);
+
+        }
+    }
+
+
+    public void ReturnToMainMenu()
+    {
+        MoneyManager.Restart();
+        RecruitManager.Instance.Restart();
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void LoadFriendlies()

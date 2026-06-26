@@ -59,7 +59,7 @@ namespace recruits {
             epicRecruits = new List<string>();
             legendaryRecruits = new List<string>();
             recruitList = new List<Recruit>();
-            battleRecruits = new List<Recruit>();
+            //battleRecruits = new List<Recruit>();
 
 
             //prepare all recruits!
@@ -116,7 +116,7 @@ namespace recruits {
 
         public void setStartingRecruits()
         {
-            
+            battleRecruits = new List<Recruit>();
             //assign starting recruits --//may consider having extra default recruits to start
             for (int i = 0; i < 5; i++) //arbitrary, start with 5 random common recruits
             {

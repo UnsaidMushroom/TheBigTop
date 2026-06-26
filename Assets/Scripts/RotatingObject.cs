@@ -33,6 +33,9 @@ public class RotatingObject : Abstr_Damagable
 
     public bool MouseHeld = false;
 
+    public SpriteRenderer HealthBar;
+    public const float HPtoWidth = 1 / 50f;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -43,8 +46,10 @@ public class RotatingObject : Abstr_Damagable
             MouseClick = InputSystem.actions.FindAction("Player/Attack");
         }
         myCollider = gameObject.GetComponent<Collider2D>();
+        HealthBar.size = new Vector2(myRecruit.remainingHP * HPtoWidth, 0.1f);
+
     }
-    
+
 
     public void applyStartingStuff(Vector3 centerPos, float xRad, float yRad, float angle, float minActAng, float maxActAng)
     {
@@ -129,6 +134,7 @@ public class RotatingObject : Abstr_Damagable
                 }
             }
             //apply damaged effects
+            HealthBar.size = new Vector2(myRecruit.remainingHP * HPtoWidth, 0.1f);
         }
     }
 

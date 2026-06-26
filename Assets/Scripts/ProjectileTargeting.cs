@@ -19,7 +19,13 @@ public class ProjectileTargeting : Abstr_Projectile
         {
             Target = EnemiesManager.Instance.getActive();
         }
-        targetPos = Target.transform.position;
+
+
+        if (Target == null) { targetPos = Vector3.zero; } //error check
+        else
+        {
+            targetPos = Target.transform.position;
+        }
         
     }
 

@@ -228,6 +228,9 @@ MonoBehaviour:
   activeColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveColor: {r: 0.6627451, g: 0.6627451, b: 0.6627451, a: 1}
   myRenderer: {fileID: 0}
+  myCollider: {fileID: 0}
+  MouseHeld: 0
+  HealthBar: {fileID: 2732521043864264542}
 --- !u!114 &2712573478826958362
 MonoBehaviour:
   m_ObjectHideFlags: 0

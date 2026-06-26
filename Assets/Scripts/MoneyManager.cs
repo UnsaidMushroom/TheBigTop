@@ -7,23 +7,18 @@ public class MoneyManager : MonoBehaviour
     public static MoneyManager instance;
 
 
-    public int funds = 0;
+    public static int funds = -1;
     public TextMeshProUGUI moneyText;
 
     public void Start()
     {
 
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            funds = 12;
-            updateMoneyText();
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        
+        instance = this;
+        //DontDestroyOnLoad(gameObject);
+        if (funds == -1) { funds = 12; }
+        updateMoneyText();
+        
         
     }
 
@@ -32,6 +27,14 @@ public class MoneyManager : MonoBehaviour
         funds += amount;
         updateMoneyText();
     }
+
+
+    public static void addFundsS(int amount)
+    {
+        if (funds == -1) { funds = 12; }
+        funds += amount;
+    }
+
 
     public bool SpendFunds(int amount)
     {
@@ -50,6 +53,12 @@ public class MoneyManager : MonoBehaviour
     public void updateMoneyText()
     {
         moneyText.text = "$" + funds;
+    }
+
+    public static void Restart()
+    {
+        funds = -1;
+        instance = null;
     }
 
 }
