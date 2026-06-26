@@ -70,8 +70,13 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("getActive method takes 'left' or 'right' only as a param!!");
-            return closestRight;
+            int r = Mathf.FloorToInt(Random.value * 2);
+            return (r <1)?closestRight:closestLeft ;
         }
+    }
+
+    public RotatingObject getActive()
+    {
+        return getActive("rand");
     }
 }

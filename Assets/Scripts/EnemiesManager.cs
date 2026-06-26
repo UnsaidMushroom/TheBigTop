@@ -10,6 +10,12 @@ public class EnemiesManager : BattleManager
     public static List<Encounter> encounters;
     public Encounter activeEncounter;
 
+    public float halftimePerAttack = 0.2f;
+
+    public int layersDeep = 0;
+    public const float fifthWheel = 360 / 5f;
+    public const float rotDegPerSecond = 50;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +25,8 @@ public class EnemiesManager : BattleManager
             LoadEncounters();
         }
         getNewEncounter();
+        layersDeep = 0;
+        BeginNextMove();
     }
 
     // Update is called once per frame
@@ -36,7 +44,11 @@ public class EnemiesManager : BattleManager
         encounters = new List<Encounter>();
 
         //prepare AttackPatterns for the encounters
-        //options are: leftAttack,rightAttack,shortWait,longWait,spinLeft,spinRight, spinVeryLeft, spinVeryRight, spinSlightLeft, spinSlightRight
+        //options are: leftAttack,rightAttack,randAttack,
+        //fastLeftAttack, slowLeftAttack, and the same for right and rand
+        //shortWait,longWait,
+        //spinLeft,spinRight, spinVeryLeft, spinVeryRight, spinSlightLeft, spinSlightRight
+        //left and right are realtive to the center of the circle looking forward
         AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","spinLeft");
 
         //for now, only placing one encounter, really will have more
@@ -66,7 +78,10 @@ public class EnemiesManager : BattleManager
     //call this at the beginning of battle and whenever the previous finishes. 
     public void BeginNextMove()
     {
-        StartCoroutine(activeEncounter.getNextMove());
+        if (layersDeep == 0)
+        {
+            StartCoroutine(activeEncounter.getNextMove());
+        }
 
     }
 
@@ -76,11 +91,341 @@ public class EnemiesManager : BattleManager
 
     public IEnumerator leftAttack()
     {
+        layersDeep++;
 
+        yield return new WaitForSeconds(halftimePerAttack);
+        getActive("left").Attack();
+        yield return new WaitForSeconds(halftimePerAttack);
+
+        layersDeep--;
+        BeginNextMove();
 
         yield return null;
     }
 
+    public IEnumerator rightAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack);
+        getActive("right").Attack();
+        yield return new WaitForSeconds(halftimePerAttack);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+    public IEnumerator randAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack);
+        getActive("rand").Attack();
+        yield return new WaitForSeconds(halftimePerAttack);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator fastLeftAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack/2);
+        getActive("left").Attack();
+        yield return new WaitForSeconds(halftimePerAttack/2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator fastRightAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack / 2);
+        getActive("right").Attack();
+        yield return new WaitForSeconds(halftimePerAttack / 2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+    public IEnumerator fastRandAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack / 2);
+        getActive("rand").Attack();
+        yield return new WaitForSeconds(halftimePerAttack / 2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator slowLeftAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+        getActive("left").Attack();
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator slowRightAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+        getActive("right").Attack();
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+    public IEnumerator slowRandAttack()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+        getActive("rand").Attack();
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator shortWait()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack/2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator mediumWait()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+    public IEnumerator longWait()
+    {
+        layersDeep++;
+
+        yield return new WaitForSeconds(halftimePerAttack * 2);
+
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+    }
+
+    public IEnumerator spinLeft()
+    {
+        layersDeep++;
+
+        //float debugTimer = Time.time;
+        for (float i = 0; i < fifthWheel;)
+        {
+            float temp = rotDegPerSecond * Time.deltaTime;
+            //debugTimer += Time.deltaTime;
+            foreach (RotatingObject ro in rotatingObjects)
+            {
+                ro.RotateAmount(temp);
+            }
+            i += temp;
+            //Debug.Log("degrees current spin " + i + "; time elapsed " + (Time.time - debugTimer));
+            yield return null;
+
+        }
+
+        if (getActive() == null)
+        {
+            StartCoroutine(spinSlightLeft());
+        }
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+
+    }
+    public IEnumerator spinSlightLeft()
+    {
+        layersDeep++;
+
+
+        for (float i = 0; i < fifthWheel/2; i++)
+        {
+            float temp = rotDegPerSecond * Time.deltaTime;
+            //debugTimer += Time.deltaTime;
+            foreach (RotatingObject ro in rotatingObjects)
+            {
+                ro.RotateAmount(temp);
+            }
+            i += temp;
+            //Debug.Log("degrees current spin " + i + "; time elapsed " + (Time.time - debugTimer));
+            yield return null;
+
+        }
+
+        if (getActive() == null)
+        {
+            StartCoroutine(spinSlightLeft());
+        }
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+
+    }
+    public IEnumerator spinVeryLeft()
+    {
+        layersDeep++;
+
+
+        for (float i = 0; i < fifthWheel * 2; i++)
+        {
+            float temp = rotDegPerSecond * Time.deltaTime;
+            //debugTimer += Time.deltaTime;
+            foreach (RotatingObject ro in rotatingObjects)
+            {
+                ro.RotateAmount(temp);
+            }
+            i += temp;
+            //Debug.Log("degrees current spin " + i + "; time elapsed " + (Time.time - debugTimer));
+            yield return null;
+
+
+        }
+
+        if (getActive() == null)
+        {
+            StartCoroutine(spinLeft());
+        }
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+
+    }
+
+    public IEnumerator spinRight()
+    {
+        layersDeep++;
+
+
+        for (float i = 0; i < fifthWheel; i++)
+        {
+            float temp = rotDegPerSecond * Time.deltaTime;
+            //debugTimer += Time.deltaTime;
+            foreach (RotatingObject ro in rotatingObjects)
+            {
+                ro.RotateAmount(temp);
+            }
+            i += temp;
+            //Debug.Log("degrees current spin " + i + "; time elapsed " + (Time.time - debugTimer));
+            yield return null;
+
+
+        }
+
+        if (getActive() == null)
+        {
+            StartCoroutine(spinSlightRight());
+        }
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+
+    }
+    public IEnumerator spinSlightRight()
+    {
+        layersDeep++;
+
+
+        for (float i = 0; i < fifthWheel / 2; i++)
+        {
+            float temp = rotDegPerSecond * Time.deltaTime;
+            //debugTimer += Time.deltaTime;
+            foreach (RotatingObject ro in rotatingObjects)
+            {
+                ro.RotateAmount(temp);
+            }
+            i += temp;
+            //Debug.Log("degrees current spin " + i + "; time elapsed " + (Time.time - debugTimer));
+            yield return null;
+
+
+        }
+
+        if (getActive() == null)
+        {
+            StartCoroutine(spinSlightRight());
+        }
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+
+    }
+    public IEnumerator spinVeryRight()
+    {
+        layersDeep++;
+
+
+        for (float i = 0; i < fifthWheel * 2; i++)
+        {
+            float temp = rotDegPerSecond * Time.deltaTime;
+            //debugTimer += Time.deltaTime;
+            foreach (RotatingObject ro in rotatingObjects)
+            {
+                ro.RotateAmount(temp);
+            }
+            i += temp;
+            //Debug.Log("degrees current spin " + i + "; time elapsed " + (Time.time - debugTimer));
+            yield return null;
+
+
+        }
+
+        if (getActive() == null)
+        {
+            StartCoroutine(spinRight());
+        }
+        layersDeep--;
+        BeginNextMove();
+
+        yield return null;
+
+    }
 
 
 
