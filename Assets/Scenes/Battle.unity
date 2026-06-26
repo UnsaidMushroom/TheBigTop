@@ -430,6 +430,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5404634091102657564, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6766051857369649008, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_Name
       value: LemonTwist (2)
@@ -440,11 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7491712962774101615, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.88
+      value: -6.71
       objectReference: {fileID: 0}
     - target: {fileID: 7491712962774101615, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.18
+      value: -0.94
       objectReference: {fileID: 0}
     - target: {fileID: 7491712962774101615, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2347,6 +2351,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5404634091102657564, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6766051857369649008, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_Name
       value: LemonTwist (1)
@@ -2758,6 +2766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5404634091102657564, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6766051857369649008, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_Name
       value: LemonTwist
@@ -2768,11 +2780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7491712962774101615, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.99
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 7491712962774101615, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.67
+      value: -1.52
       objectReference: {fileID: 0}
     - target: {fileID: 7491712962774101615, guid: ceedd3cfbab16d343b03fd689edd8366, type: 3}
       propertyPath: m_LocalPosition.z
