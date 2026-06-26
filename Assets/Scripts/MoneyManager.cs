@@ -16,6 +16,7 @@ public class MoneyManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
             funds = 12;
             updateMoneyText();
         }

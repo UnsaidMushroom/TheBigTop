@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Abstr_Projectile : Abstr_Damagable
@@ -10,7 +11,7 @@ public abstract class Abstr_Projectile : Abstr_Damagable
     {
         base.Start();
         if (myBody == null) { myBody = gameObject.GetComponent<Rigidbody2D>(); }
-
+        StartCoroutine(WaitABitToContact());
     }
 
     // Update is called once per frame
@@ -38,5 +39,15 @@ public abstract class Abstr_Projectile : Abstr_Damagable
     {
         gameObject.tag = tag;
     }
+
+    public IEnumerator WaitABitToContact()
+    {
+        Collider2D Col = gameObject.GetComponent<Collider2D>();
+        Col.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        Col.enabled = true;
+
+    }
+
 
 }
