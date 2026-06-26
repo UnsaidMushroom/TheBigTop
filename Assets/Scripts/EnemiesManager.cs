@@ -36,7 +36,8 @@ public class EnemiesManager : BattleManager
         encounters = new List<Encounter>();
 
         //prepare AttackPatterns for the encounters
-        AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","SpinLeft");
+        //options are: leftAttack,rightAttack,shortWait,longWait,spinLeft,spinRight, spinVeryLeft, spinVeryRight, spinSlightLeft, spinSlightRight
+        AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","spinLeft");
 
         //for now, only placing one encounter, really will have more
         encounters.Add(new Encounter("default", -1, new List<string>() { "simpleCommon1", "simpleRare1", "simpleEpic1", "simpleCommon2", "simpleCommon1" }, simplePattern));
@@ -70,6 +71,8 @@ public class EnemiesManager : BattleManager
     }
 
 
+    
+
 
     public IEnumerator leftAttack()
     {
@@ -77,6 +80,9 @@ public class EnemiesManager : BattleManager
 
         yield return null;
     }
+
+
+
 
 
 

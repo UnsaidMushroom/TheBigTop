@@ -19,6 +19,7 @@ public class BattleManager : MonoBehaviour
     public virtual void KnockOut(GameObject KOed)
     {
         Debug.Log(KOed.GetComponent<RotatingObject>().myRecruit.name + " was KOed!");
+        rotatingObjects.Remove(KOed.GetComponent<RotatingObject>());
         Destroy(KOed);
     }
 
@@ -38,6 +39,39 @@ public class BattleManager : MonoBehaviour
             rotatingObjects.Add(r);
             r.RotateAmount(0);
 
+        }
+    }
+
+    public RotatingObject getActive(string LorR)
+    {
+        RotatingObject closestLeft = null;
+        RotatingObject closestRight = null;
+        foreach (RotatingObject ro in rotatingObjects)
+        {
+            if (ro.inActiveAngle())
+            {
+                if (ro.angle - MinActAngle < MaxActAngle - ro.angle)
+                {
+                    closestRight = ro;
+                }
+                else
+                {
+                    closestLeft = ro;
+                }
+            }
+        }
+        if (LorR == "left")
+        {
+            return (closestLeft != null) ? closestLeft : closestRight;
+        }
+        else if (LorR == "right")
+        {
+            return (closestRight != null) ? closestRight : closestLeft;
+        }
+        else
+        {
+            Debug.Log("getActive method takes 'left' or 'right' only as a param!!");
+            return closestRight;
         }
     }
 }
