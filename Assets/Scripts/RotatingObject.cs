@@ -76,7 +76,7 @@ public class RotatingObject : Abstr_Damagable
             {
                 if (!MouseHeld)
                 {
-                    Debug.Log(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+                    //Debug.Log(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
                     if (myCollider.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()))){
                         Attack();
                     }

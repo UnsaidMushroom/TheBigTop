@@ -1,4 +1,5 @@
 using recruits;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class FriendliesManager : BattleManager
     public static FriendliesManager Instance;
     public float scrollSensitivity = 10;
 
+    public GameObject FightScreen;
 
     //public InputActionAsset actions;
     public InputAction scroll;
@@ -21,6 +23,7 @@ public class FriendliesManager : BattleManager
         ILostScreen.SetActive(false);
         scroll = InputSystem.actions.FindAction("Player/Scroll");
         BattleActive = true;
+        StartCoroutine(DisplayFightScreen());
     }
 
     // Update is called once per frame
@@ -77,6 +80,16 @@ public class FriendliesManager : BattleManager
         //place the rotating objects
         PlaceRecruits();
         
+    }
+
+
+    public IEnumerator DisplayFightScreen()
+    {
+        FightScreen.SetActive(true);
+
+        yield return new WaitForSeconds(.5f);
+
+        FightScreen.SetActive(false);
     }
 
 

@@ -22,6 +22,13 @@ public class EnemiesManager : BattleManager
     public TextMeshProUGUI rewardtext1;
     public TextMeshProUGUI rewardtext2;
 
+    public static int battlesFought;
+    public const int battleMax = 5;
+    public static Encounter FinalEncounter;
+
+
+    public GameObject FinalWinScreen;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +43,7 @@ public class EnemiesManager : BattleManager
         combatReward = 0;
         ILostScreen.SetActive(false);
 
-        BeginNextMove();
+        StartCoroutine(longWait());
     }
 
     // Update is called once per frame
@@ -54,6 +61,11 @@ public class EnemiesManager : BattleManager
     {
         if (rotatingObjects.Count <= 0)
         {
+            if (battlesFought == battleMax)
+            {
+                FinalWinScreen.SetActive(true);
+            }
+
             foreach (Recruit r in recruitList)
             {
                 combatReward += r.sellValue();
@@ -66,7 +78,10 @@ public class EnemiesManager : BattleManager
             Debug.Log("you have beaten the opponent!!!");
             BattleActive = false;
 
-            ILostScreen.SetActive(true);
+            if (battlesFought != battleMax)
+            {
+                ILostScreen.SetActive(true);
+            }
             foreach (Recruit rec in RecruitManager.Instance.battleRecruits)
             {
                 rec.levelUp(1);
@@ -91,25 +106,43 @@ public class EnemiesManager : BattleManager
         //spinLeft,spinRight, spinVeryLeft, spinVeryRight, spinSlightLeft, spinSlightRight
         //left and right are realtive to the center of the circle looking forward
         AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","spinLeft");
+        AttackPattern RingMasterPattern = new AttackPattern("fastLeftAttack", "spinSlightRight", "fastRightAttack", "spinVeryRight", "shortWait", "leftAttack", "spinVeryLeft");
 
         //for now, only placing one encounter, really will have more
-        encounters.Add(new Encounter("default", -1, new List<string>() { "Leon", "Leon", "Leon", "Leon", "Leon" }, simplePattern));
+        encounters.Add(new Encounter("default", 1, new List<string>() { "Leon", "Leon", "Leon", "Leon", "Leon" }, simplePattern));
+
+
+
+        //final encounter is special, occurs as the 6th fight.
+        FinalEncounter = new Encounter("The Ringmaster", 3, new List<string>() { "", "", "", "", "" }, RingMasterPattern);
 
     }
 
     public void getNewEncounter()
     {
+        battlesFought++;
+
         if (RecruitManager.Instance == null) //catch edge case
         {
             FindFirstObjectByType<RecruitManager>().Start(); // force recruit manager to load first
         }
 
-        int r = Random.Range(0, encounters.Count);
-        activeEncounter = encounters[r];
+        if (battlesFought == battleMax)
+        {
+            activeEncounter = FinalEncounter;
+        }
+        else
+        {
+            int rand = Random.Range(0, encounters.Count);
+            activeEncounter = encounters[rand];
+        }
         recruitList = new List<Recruit>();
         foreach(string rec in activeEncounter.encounterRecs)
         {
-            recruitList.Add(RecruitManager.Instance.GetNewRecruit(rec));
+            Recruit r = RecruitManager.Instance.GetNewRecruit(rec);
+            r.levelUp(battlesFought);
+            recruitList.Add(r);
+
         }
         PlaceRecruits();
         
@@ -126,6 +159,10 @@ public class EnemiesManager : BattleManager
         }
 
     }
+
+
+
+
 
 
     
