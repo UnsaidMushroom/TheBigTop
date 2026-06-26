@@ -21,7 +21,7 @@ public class ProjectileTargeting : Abstr_Projectile
         }
 
 
-        if (Target == null) { targetPos = Vector3.zero; } //error check
+        if (Target == null) { targetPos = Vector3.up *10; } //error check
         else
         {
             targetPos = Target.transform.position;
@@ -32,7 +32,7 @@ public class ProjectileTargeting : Abstr_Projectile
     // Update is called once per frames
     void Update()
     {
-        transform.position = Vector2.MoveTowards(this.transform.position, targetPos*2, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, targetPos * 1.5f, speed * Time.deltaTime);
         timer -= Time.deltaTime;
         if (timer <= 0)
         {

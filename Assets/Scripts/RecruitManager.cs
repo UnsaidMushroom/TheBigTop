@@ -67,18 +67,24 @@ namespace recruits {
 
             //this is dummy data! when we have real stuff, remove this!
 
-            masterRecruitDict.Add("simpleCommon1", new Recruit("simpleCommon1", Rarity.COMMON, 5, "simple fire attack", 30));
-            masterRecruitDict.Add("simpleCommon2", new Recruit("simpleCommon2", Rarity.COMMON, 5, "simple water attack", 30));
-            masterRecruitDict.Add("simpleCommon3", new Recruit("simpleCommon3", Rarity.COMMON, 5, "simple air attack", 30));
-            masterRecruitDict.Add("simpleCommon4", new Recruit("simpleCommon4", Rarity.COMMON, 5, "simple ice attack", 30));
-            masterRecruitDict.Add("err 1", new Recruit("err 1", Rarity.COMMON, 5, "simple ice attack", 30));
-            masterRecruitDict.Add("Leon", new Recruit("Leon", Rarity.COMMON, 6, "a lion with a firey mane. Simple fire attack.",40, "ProjectileBasic", 1));
+            //masterRecruitDict.Add("simpleCommon1", new Recruit("simpleCommon1", Rarity.COMMON, 5, "simple fire attack", 30));
+            //masterRecruitDict.Add("simpleCommon2", new Recruit("simpleCommon2", Rarity.COMMON, 5, "simple water attack", 30));
+            //masterRecruitDict.Add("simpleCommon3", new Recruit("simpleCommon3", Rarity.COMMON, 5, "simple air attack", 30));
+            //masterRecruitDict.Add("simpleCommon4", new Recruit("simpleCommon4", Rarity.COMMON, 5, "simple ice attack", 30));
+            //masterRecruitDict.Add("err 1", new Recruit("err 1", Rarity.COMMON, 5, "simple ice attack", 30));
+            masterRecruitDict.Add("Sealfie", new Recruit("Sealfie", Rarity.COMMON, 3, "a seal with a bouncy ball. Takes hits well.", 65, "ProjectileBasic", 1));
+            masterRecruitDict.Add("Carrol", new Recruit("Carrol", Rarity.COMMON, 4, "a horse who has left the carousel. Simple horn attack.", 50, "ProjectileOpposite", 1));
+            masterRecruitDict.Add("Plunkey", new Recruit("Plunkey", Rarity.COMMON, 2, "a monkey that found its way into the circus and started spinning plates.", 30, "ProjectileBasic", 1));
+            masterRecruitDict.Add("Tinyphant", new Recruit("Tinyphant", Rarity.COMMON, 4, "a plush-sized elephant. self-consoius about it, so don't mention it. Water attack.", 50, "ProjectileBasic", 1));
+            masterRecruitDict.Add("Lemonmon", new Recruit("Lemonmon", Rarity.COMMON, 3, "a sour drink that thinks it is alive. citrus twist attack.", 35, "LemonTwist", 1));
 
 
-            masterRecruitDict.Add("simpleRare1", new Recruit("simpleRare1", Rarity.RARE, 8, "rare fire attack", 40));
-            masterRecruitDict.Add("simpleRare2", new Recruit("simpleRare2", Rarity.RARE, 8, "rare water attack", 40));
-            masterRecruitDict.Add("simpleRare3", new Recruit("simpleRare3", Rarity.RARE, 8, "rare air attack", 40));
-            masterRecruitDict.Add("simpleRare4", new Recruit("simpleRare4", Rarity.RARE, 8, "rare ice attack", 40));
+            //masterRecruitDict.Add("simpleRare1", new Recruit("simpleRare1", Rarity.RARE, 8, "rare fire attack", 40));
+            //masterRecruitDict.Add("simpleRare2", new Recruit("simpleRare2", Rarity.RARE, 8, "rare water attack", 40));
+            //masterRecruitDict.Add("simpleRare3", new Recruit("simpleRare3", Rarity.RARE, 8, "rare air attack", 40));
+            //masterRecruitDict.Add("simpleRare4", new Recruit("simpleRare4", Rarity.RARE, 8, "rare ice attack", 40));
+            masterRecruitDict.Add("Leon", new Recruit("Leon", Rarity.RARE, 6, "a lion with a firey mane. Simple fire attack.", 40, "ProjectileBasic", 1));
+
 
             masterRecruitDict.Add("simpleEpic1", new Recruit("simpleEpic1", Rarity.EPIC, 12, "epic fire attack", 50));
             masterRecruitDict.Add("simpleEpic2", new Recruit("simpleEpic2", Rarity.EPIC, 12, "epic water attack", 50));

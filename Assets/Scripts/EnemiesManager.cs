@@ -23,7 +23,7 @@ public class EnemiesManager : BattleManager
     public TextMeshProUGUI rewardtext2;
 
     public static int battlesFought;
-    public const int battleMax = 5;
+    public const int battleMax = 4;
     public static Encounter FinalEncounter;
 
 
