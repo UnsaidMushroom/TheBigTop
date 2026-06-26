@@ -6,11 +6,19 @@ public class ProjectileTargeting : Abstr_Projectile
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed = 15f;
     private float timer = 2;
-    public GameObject Target;
+    public RotatingObject Target;
     private Vector3 targetPos;
     protected override void Start()
     {
         base.Start();
+        if (this.CompareTag("Enemy"))
+        {
+            Target = FriendliesManager.Instance.getActive();
+        }
+        else
+        {
+            Target = EnemiesManager.Instance.getActive();
+        }
         targetPos = Target.transform.position;
         
     }
