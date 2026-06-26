@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2984454550455747206}
   - component: {fileID: 46616662439787432}
   m_Layer: 0
-  m_Name: FlamingWheel
+  m_Name: IceWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7426651784819577117, guid: 100a9d75bedd1054fa7f4132271de22b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 692c4a6ef40c71c499f87b4e2a38cc64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
