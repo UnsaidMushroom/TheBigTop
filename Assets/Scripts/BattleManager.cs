@@ -29,6 +29,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameObject go = Instantiate(RotatingTemplate, wheelPosition, Quaternion.identity);
+            go.tag = gameObject.tag;
             RotatingObject r = go.GetComponent<RotatingObject>();
             float angle = forwardAngle + spacing + spacing*2*i;
             r.applyStartingStuff(wheelPosition,xRadius,yRadius,angle,MinActAngle,MaxActAngle);

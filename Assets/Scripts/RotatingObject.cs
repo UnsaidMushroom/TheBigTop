@@ -25,15 +25,24 @@ public class RotatingObject : Abstr_Damagable
     public Color inactiveColor = Color.darkGray;
     public SpriteRenderer myRenderer;
 
+    public Collider2D myCollider;
 
     public Recruit myRecruit;
+
+    public static InputAction MouseClick;
+
+    public bool MouseHeld = false;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
-
+        if (MouseClick == null)
+        {
+            MouseClick = InputSystem.actions.FindAction("Player/Attack");
+        }
+        myCollider = gameObject.GetComponent<Collider2D>();
     }
     
 
@@ -55,10 +64,26 @@ public class RotatingObject : Abstr_Damagable
     void Update()
     {
 
-        //for now, set rotation
-        //RotateAmount(rotateSpeed * Time.deltaTime);
-
-        //applyColor();
+        //Debug.Log(MouseClick.ReadValue<float>());
+        if (myTag == "Friendly")
+        {
+            if (MouseClick.ReadValue<float>() == 1f  ) 
+            {
+                if (!MouseHeld)
+                {
+                    Debug.Log(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+                    if (myCollider.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()))){
+                        Attack();
+                    }
+                    MouseHeld = true;
+                }
+            }
+            else
+            {
+                MouseHeld = false;
+            }
+            //Debug.Log(MouseClick.ReadValue<float>() + 0.5f);
+        }
 
     }
 
@@ -124,6 +149,7 @@ public class RotatingObject : Abstr_Damagable
     {
         if (inActiveAngle())
         {
+            Debug.Log("Attacked");
             GameObject go = Instantiate(myRecruit.getAttack(), transform.position, Quaternion.identity);
             Abstr_Projectile ap = go.GetComponent<Abstr_Projectile>();
             ap.setDamage(myRecruit.damage);
@@ -131,12 +157,10 @@ public class RotatingObject : Abstr_Damagable
         }
     }
 
-    private void OnMouseDown()
-    {
-        if (myTag == "Friendly")
-        {
-            Attack();
-        }
-    }
+    
+    
+        
+    
+    
 
 }

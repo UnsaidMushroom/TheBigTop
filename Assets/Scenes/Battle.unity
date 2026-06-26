@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBody: {fileID: 0}
+  damage: 0
   speed: 15
   Target: {fileID: 25030245}
 --- !u!1 &150487062
@@ -990,7 +991,7 @@ GameObject:
   - component: {fileID: 478845330}
   m_Layer: 0
   m_Name: EnemiesManager
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,6 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBody: {fileID: 0}
+  damage: 0
   speed: 15
 --- !u!212 &568262535
 SpriteRenderer:
@@ -1547,6 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBody: {fileID: 0}
+  damage: 0
   speed: 1
   rotSpeed: 250
   angle: 0
@@ -1987,7 +1990,7 @@ GameObject:
   - component: {fileID: 927327569}
   m_Layer: 0
   m_Name: FriendliesManager
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
