@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 91f2cbea11f09f94a8fc6052f8387164
+guid: 191db7c016a478d438806bc58e0c8c5d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4027683695882663986
-    second: ice_lion_0
+      213: -2324497882059512435
+    second: peanut1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ice_lion_0
+      name: peanut1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 36
-        height: 36
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec70847a40bca18c0800000000000000
-      internalID: -4027683695882663986
+      spriteID: d85e1b2fd79bdbfd0800000000000000
+      internalID: -2324497882059512435
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ice_lion_0: -4027683695882663986
+      peanut1_0: -2324497882059512435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
