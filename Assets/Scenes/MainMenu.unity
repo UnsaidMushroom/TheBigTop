@@ -1892,15 +1892,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HowToPlay:
+  m_text: 'How To Play:
 
     Click on your recruits to attack.
 
-    Mouse scroll to
-    spin your recruits and dodge attacks.
+    Mouse scroll
+    to spin your recruits and dodge attacks.
 
-    Get new recruits from the slot machine
-    at the carousel.
+    Get new recruits from the slot
+    machine at the carousel.
 
     Have fun, and defeat the Ringmaster!'
   m_isRightToLeft: 0

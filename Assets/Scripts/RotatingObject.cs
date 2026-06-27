@@ -36,6 +36,9 @@ public class RotatingObject : Abstr_Damagable
     public SpriteRenderer HealthBar;
     public const float HPtoWidth = 1 / 50f;
 
+    public float coolDownTimer;
+    public float coolDownSecs = 0.25f;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -47,7 +50,7 @@ public class RotatingObject : Abstr_Damagable
         }
         myCollider = gameObject.GetComponent<Collider2D>();
         HealthBar.size = new Vector2(myRecruit.remainingHP * HPtoWidth, 0.1f);
-
+        coolDownSecs = 0.25f;
     }
 
 
@@ -68,7 +71,11 @@ public class RotatingObject : Abstr_Damagable
     // Update is called once per frame
     void Update()
     {
+        if (coolDownTimer > 0)
+        {
+            coolDownTimer -= Time.deltaTime;
 
+        }
         //Debug.Log(MouseClick.ReadValue<float>());
         if (myTag == "Friendly")
         {
@@ -153,13 +160,14 @@ public class RotatingObject : Abstr_Damagable
 
     public void Attack()
     {
-        if (inActiveAngle())
+        if (inActiveAngle() && coolDownTimer <= 0)
         {
             Debug.Log("Attacked");
             GameObject go = Instantiate(myRecruit.getAttack(), transform.position, Quaternion.identity);
             Abstr_Projectile ap = go.GetComponent<Abstr_Projectile>();
             ap.setDamage(myRecruit.damage);
             ap.setTag(myTag);
+            coolDownTimer = coolDownSecs;
         }
     }
 
