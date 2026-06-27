@@ -101,14 +101,14 @@ public class Slots : MonoBehaviour
 
     public rollOption getRandomRoll()
     {
-        int MAX = 20;
+        int MAX = 10;
         int rand = Random.Range(0, MAX);
 
-        if (rand <= 10)
+        if (rand <= 5)
         {
             return rollOption.CHERRY;
         }
-        else if (rand <= 17)
+        else if (rand <= 8)
         {
             return rollOption.BELL;
         }
