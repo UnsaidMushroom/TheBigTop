@@ -95,9 +95,11 @@ namespace recruits {
             masterRecruitDict.Add("Clown", new Recruit("Clown", Rarity.EPIC, 20, "a glass-cannon clown who has nobody. GET READY FOR A CLOWN ATTACK! Be serious.", 1, "ClownAttack", 1));
             masterRecruitDict.Add("Funnel", new Recruit("Funnel", Rarity.EPIC, 10, "a funnel cake that IS alive. delicious sugar attack. Sweet, sugary, serious.", 35, "SugarRocket", 1));
 
-            masterRecruitDict.Add("Gold Clown", new Recruit("Gold Clown", Rarity.LEGENDARY, 25, "glass cannon? more like, GOLD CANNON. WA-HA! WA-HA! WA-HA! (this is serious trust me)", 1, "GoldClownAttack"));
+            masterRecruitDict.Add("Gold Clown", new Recruit("Gold Clown", Rarity.LEGENDARY, 25, "excuse me sir, do you have Prince GOLD in a can? you do? well, you better let the poor CLOWN out!. WA-HA! WA-HA! WA-HA! (this is serious trust me)", 1, "GoldClownAttack"));
             masterRecruitDict.Add("Gold Lemonade", new Recruit("Gold Lemonade", Rarity.LEGENDARY, 12, "refreshing. /srs", 60, "GoldLemonTwist"));
             masterRecruitDict.Add("Gold Funnel", new Recruit("Gold Funnel", Rarity.LEGENDARY, 15, "i know someone who LOVES funnel cake. do you LOVE funnel cake? Serious question.", 45, "GoldSugarRocket"));
+            masterRecruitDict.Add("Gleeon", new Recruit("Gleeon", Rarity.LEGENDARY, 14, "a gold-lion-hybird-mix. King of The Junjl- Junjle but still social and with it and seriously ferocious.", 50, "GoldenWheel"));
+            masterRecruitDict.Add("Gleeon", new Recruit("Gleeon", Rarity.LEGENDARY, 14, "a gold-lion-hybird-mix. King of The Junjl- Junjle but still social and with it and seriously ferocious.", 50, "GoldenWheel"));
             //masterRecruitDict.Add("simpleLegendary1", new Recruit("simpleLegendary1", Rarity.LEGENDARY, 15, "legendary fire attack", 60));
             //masterRecruitDict.Add("simpleLegendary2", new Recruit("simpleLegendary2", Rarity.LEGENDARY, 15, "legendary water attack", 60));
 
