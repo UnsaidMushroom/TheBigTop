@@ -6705,6 +6705,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739498722301955199, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 6953148197990204449}
+    - target: {fileID: 6739498722301955199, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 6953148197990204448}
     - target: {fileID: 9071055377450334214, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
       propertyPath: m_Name
       value: Spinning Creature Basic
@@ -6718,6 +6726,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
+--- !u!82 &6953148197990204448 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -4962965161787214779, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
+  m_PrefabInstance: {fileID: 6953148197990204447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6953148197990204449 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -2364383250562370014, guid: 08559c6de4316c143ac150f8e95c4b77, type: 3}
+  m_PrefabInstance: {fileID: 6953148197990204447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -39,6 +39,9 @@ public class RotatingObject : Abstr_Damagable
     public float coolDownTimer;
     public float coolDownSecs = 0.25f;
 
+    public AudioSource shootSound;
+    public AudioSource damageSound;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -142,6 +145,7 @@ public class RotatingObject : Abstr_Damagable
             }
             //apply damaged effects
             HealthBar.size = new Vector2(myRecruit.remainingHP * HPtoWidth, 0.1f);
+            damageSound.Play();
         }
     }
 
@@ -167,6 +171,7 @@ public class RotatingObject : Abstr_Damagable
             Abstr_Projectile ap = go.GetComponent<Abstr_Projectile>();
             ap.setDamage(myRecruit.damage);
             ap.setTag(myTag);
+            shootSound.Play();
             coolDownTimer = coolDownSecs;
         }
     }
