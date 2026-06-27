@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2984454550455747206}
   - component: {fileID: 46616662439787432}
   m_Layer: 0
-  m_Name: GoldenWheel
+  m_Name: FineChina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,8 +126,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 986b86cb5c9e3b149a333fdc97738870, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 6036694585223483558, guid: f7a6d39840a191a4aa1073b6d3fdd06c, type: 3}
+  m_Color: {r: 1, g: 0.97438526, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
