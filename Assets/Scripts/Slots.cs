@@ -18,6 +18,12 @@ public class Slots : MonoBehaviour
 
     public int costPerSpin = 7;
 
+    public AudioSource CommonSound;
+    public AudioSource RareSound;
+    public AudioSource EpicSound;
+    public AudioSource LegendarySound;
+    public AudioSource Kachunk;
+    public AudioSource ErrSound;
     public enum rollOption
     {
         CHERRY,
@@ -41,7 +47,9 @@ public class Slots : MonoBehaviour
     public void spinMachine()
     {
 
-        if (!MoneyManager.instance.SpendFunds(costPerSpin)) { return; } //abort if not enough funds
+        if (!MoneyManager.instance.SpendFunds(costPerSpin)) { ErrSound.Play();  return; } //abort if not enough funds
+
+        Kachunk.Play();
 
         rollOption[] rolls = new rollOption[3];
 
@@ -65,12 +73,14 @@ public class Slots : MonoBehaviour
             if (rolls[0] == rollOption.CHERRY)
             {
                 Debug.Log("rolled 3 Cherries!, rare result!");
+                RareSound.Play();
                 //choose from rare options
                 returned = RecruitManager.stcRandRecruit(Rarity.RARE);
             }
             else if (rolls[0] == rollOption.BELL)
             {
                 Debug.Log("rolled 3 Bells!, epic result!");
+                EpicSound.Play();
                 //choose from epic options
                 returned = RecruitManager.stcRandRecruit(Rarity.EPIC);
 
@@ -78,6 +88,7 @@ public class Slots : MonoBehaviour
             else if (rolls[0] == rollOption.SEVEN)
             {
                 Debug.Log("Rolled 3 Sevens!, Legendary result!");
+                LegendarySound.Play();
                 //choose from legendary options
                 returned = RecruitManager.stcRandRecruit(Rarity.LEGENDARY);
 
@@ -87,6 +98,7 @@ public class Slots : MonoBehaviour
         {
             //all different
             Debug.Log("rolled different items, common result");
+            CommonSound.Play();
             //choose from common options
             returned = RecruitManager.stcRandRecruit(Rarity.COMMON);
 
