@@ -173,6 +173,39 @@ namespace recruits {
 
         }
 
+        public string getRandomStringRecruit(Rarity rarity)
+        {
+            string temp = "error";
+            if (rarity == Rarity.COMMON)
+            {
+                temp = commonRecruits[Random.Range(0, commonRecruits.Count)];
+            }
+            else if (rarity == Rarity.RARE)
+            {
+                temp = rareRecruits[Random.Range(0, rareRecruits.Count)];
+            }
+            else if (rarity == Rarity.EPIC)
+            {
+                temp = epicRecruits[Random.Range(0, epicRecruits.Count)];
+            }
+            else if (rarity == Rarity.LEGENDARY)
+            {
+                temp = legendaryRecruits[Random.Range(0, legendaryRecruits.Count)];
+            }
+            return temp;
+        }
+
+        public static List<string> getRandomBattleRecruits(Rarity r1,  Rarity r2, Rarity r3, Rarity r4, Rarity r5)
+        {
+            List<string> temp = new List<string>();
+            temp.Add(Instance.getRandomStringRecruit(r1));
+            temp.Add(Instance.getRandomStringRecruit(r2));
+            temp.Add(Instance.getRandomStringRecruit(r3));
+            temp.Add(Instance.getRandomStringRecruit(r4));
+            temp.Add(Instance.getRandomStringRecruit(r5));
+            return temp;
+        }
+
         public static Recruit stcRandRecruit(Rarity rarity)
         {
             return Instance.getRandomRecruit(rarity);

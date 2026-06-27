@@ -33,6 +33,7 @@ public class EnemiesManager : BattleManager
     void Start()
     {
         Instance = this;
+       
         if (encounters == null)
         {
             LoadEncounters();
@@ -108,11 +109,27 @@ public class EnemiesManager : BattleManager
         AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","spinLeft");
         AttackPattern simplePattern2 = new AttackPattern("rightAttack", "longWait", "leftAttack", "spinVeryLeft");
         AttackPattern simplePattern3 = new AttackPattern("spinVeryRight", "mediumWait", "rightAttack", "spinLeft");
+        AttackPattern simplePattern4 = new AttackPattern("spinSlightLeft", "mediumWait", "rightAttack", "longWait", "rightAttack");
+        AttackPattern simplePattern5 = new AttackPattern("spinVeryRight", "longWait", "rightAttack", "spinVeryLeft", "rightAttack");
+        AttackPattern simplePattern6 = new AttackPattern("spinSlightRight", "mediumWait", "leftAttack", "spinLeft", "rightAttack");
+        AttackPattern simplePattern7 = new AttackPattern("spinVeryRight", "shortWait", "rightAttack", "spinSlightRight", "rightAttack");
+
+
 
         AttackPattern RingMasterPattern = new AttackPattern("fastLeftAttack", "spinSlightRight", "fastRightAttack", "spinVeryRight", "shortWait", "leftAttack", "spinVeryLeft");
 
         //for now, only placing one encounter, really will have more
-        encounters.Add(new Encounter("default", 1, new List<string>() { "Leon", "Leon", "Leon", "Leon", "Leon" }, simplePattern));
+        encounters.Add(new Encounter("default", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.COMMON), simplePattern));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.RARE), simplePattern2));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.COMMON), simplePattern3));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.RARE, Rarity.RARE), simplePattern4));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.EPIC, Rarity.RARE), simplePattern5));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.RARE, Rarity.EPIC), simplePattern6));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.RARE), simplePattern7));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.RARE, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.COMMON), simplePattern5));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.RARE, Rarity.EPIC), simplePattern6));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.EPIC, Rarity.RARE, Rarity.RARE, Rarity.COMMON), simplePattern6));
+        encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.COMMON, Rarity.RARE, Rarity.RARE, Rarity.COMMON), simplePattern4));
 
 
 
