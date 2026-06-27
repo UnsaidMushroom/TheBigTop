@@ -6,8 +6,8 @@ namespace recruits
 {
     public class Recruit : IComparable<Recruit>
     {
-        public static string spritesPath = "Assets/Sprites/";
-        public static string attacksPath = "Assets/Prefabs/";
+        public static string spritesPath = "Sprites/";
+        public static string attacksPath = "Prefabs/";
         public static string sortMode = "none";
 
         public const float levelUpCoefficient = 1.05f;
@@ -41,18 +41,18 @@ namespace recruits
 
 
 
-            sprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritesPath + name + ".png", typeof(Sprite));
+            sprite = Resources.Load<Sprite>(spritesPath + name /*+ ".png"*/);
             if (sprite == null)
             {
-                sprite = (Sprite)AssetDatabase.LoadAssetAtPath(spritesPath + "missing_sprite" + ".png", typeof(Sprite));
+                sprite = Resources.Load<Sprite>(spritesPath + "missing_sprite" /*+ ".png"*/);
             }
 
 
 
-            myAttack = (GameObject)AssetDatabase.LoadAssetAtPath(attacksPath + attackType + ".prefab", typeof(GameObject));
+            myAttack = Resources.Load<GameObject>(attacksPath + attackType /*+ ".prefab"*/);
             if (myAttack == null)
             {
-                myAttack = (GameObject)AssetDatabase.LoadAssetAtPath(attacksPath + "DoNothingAndDie" + ".prefab", typeof(GameObject));
+                myAttack = Resources.Load<GameObject>(attacksPath + "DoNothingAndDie" /*+ ".prefab"*/);
             }
 
             timeLastModified = Time.time;
