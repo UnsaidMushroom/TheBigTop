@@ -29,6 +29,8 @@ public class EnemiesManager : BattleManager
 
     public GameObject FinalWinScreen;
 
+    public AudioSource winSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,6 +64,7 @@ public class EnemiesManager : BattleManager
     {
         if (rotatingObjects.Count <= 0)
         {
+            winSound.Play();
             if (battlesFought == battleMax)
             {
                 FinalWinScreen.SetActive(true);

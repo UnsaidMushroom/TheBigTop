@@ -15,6 +15,8 @@ public class FriendliesManager : BattleManager
     //public InputActionAsset actions;
     public InputAction scroll;
 
+    public AudioSource lossSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -56,7 +58,7 @@ public class FriendliesManager : BattleManager
             Debug.Log("You have lost !!!");
             BattleActive = false;
             ILostScreen.SetActive(true);
-
+            lossSound.Play();
         }
     }
 

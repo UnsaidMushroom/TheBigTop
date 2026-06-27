@@ -19,13 +19,14 @@ public class BattleManager : MonoBehaviour
 
     public GameObject ILostScreen;
 
-
+    public AudioSource KOSound;
 
     public virtual void KnockOut(GameObject KOed)
     {
         Debug.Log(KOed.GetComponent<RotatingObject>().myRecruit.name + " was KOed!");
         rotatingObjects.Remove(KOed.GetComponent<RotatingObject>());
         Destroy(KOed);
+        KOSound.Play();
         checkEliminated();
     }
 
