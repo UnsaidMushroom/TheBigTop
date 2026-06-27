@@ -233,7 +233,9 @@ MonoBehaviour:
   myCollider: {fileID: 0}
   MouseHeld: 0
   HealthBar: {fileID: 2732521043864264542}
-  attackSound: {fileID: -2364383250562370014}
+  coolDownTimer: 0
+  coolDownSecs: 0.25
+  shootSound: {fileID: -2364383250562370014}
   damageSound: {fileID: -4962965161787214779}
 --- !u!114 &2712573478826958362
 MonoBehaviour:
