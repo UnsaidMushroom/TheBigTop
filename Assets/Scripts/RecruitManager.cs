@@ -85,7 +85,7 @@ namespace recruits {
             //masterRecruitDict.Add("simpleRare4", new Recruit("simpleRare4", Rarity.RARE, 8, "rare ice attack", 40));
             masterRecruitDict.Add("Leon", new Recruit("Leon", Rarity.RARE, 6, "a lion with a firey mane. Simple fire attack. Take this one seriously.", 40, "FlamingWheel 1", 1));
             masterRecruitDict.Add("Ice Leon", new Recruit("Ice Leon", Rarity.RARE, 6, "a lion with an icy mane. Simple ice attack. Ice Leon? mmmm. Ice Lemon. Focus, L, this is serious.", 40, "IceWheel", 1));
-            masterRecruitDict.Add("UniCarrol", new Recruit("UniCarrol", Rarity.RARE, 5, "a unicorn who has left the carousel. Sparkly horn attack. ooooOOOOoo. Seriously shiny.", 55, "BasicHorn", 1));
+            masterRecruitDict.Add("UniCarrol", new Recruit("UniCarrol", Rarity.RARE, 5, "a unicorn who has left the carousel. Sparkly horn attack. ooooOOOOoo. Seriously shiny.", 55, "UnicornHorn", 1));
 
 
             //masterRecruitDict.Add("simpleEpic1", new Recruit("simpleEpic1", Rarity.EPIC, 12, "epic fire attack", 50));
