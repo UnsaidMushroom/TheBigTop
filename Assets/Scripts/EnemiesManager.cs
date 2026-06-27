@@ -23,7 +23,7 @@ public class EnemiesManager : BattleManager
     public TextMeshProUGUI rewardtext2;
 
     public static int battlesFought;
-    public const int battleMax = 4;
+    public const int battleMax = 7;
     public static Encounter FinalEncounter;
 
 
@@ -102,10 +102,13 @@ public class EnemiesManager : BattleManager
         //prepare AttackPatterns for the encounters
         //options are: leftAttack,rightAttack,randAttack,
         //fastLeftAttack, slowLeftAttack, and the same for right and rand
-        //shortWait,longWait,
+        //shortWait, mediumWait, longWait,
         //spinLeft,spinRight, spinVeryLeft, spinVeryRight, spinSlightLeft, spinSlightRight
         //left and right are realtive to the center of the circle looking forward
         AttackPattern simplePattern = new AttackPattern("leftAttack","shortWait","rightAttack","spinLeft");
+        AttackPattern simplePattern2 = new AttackPattern("rightAttack", "longWait", "leftAttack", "spinVeryLeft");
+        AttackPattern simplePattern3 = new AttackPattern("spinVeryRight", "mediumWait", "rightAttack", "spinLeft");
+
         AttackPattern RingMasterPattern = new AttackPattern("fastLeftAttack", "spinSlightRight", "fastRightAttack", "spinVeryRight", "shortWait", "leftAttack", "spinVeryLeft");
 
         //for now, only placing one encounter, really will have more
@@ -114,7 +117,7 @@ public class EnemiesManager : BattleManager
 
 
         //final encounter is special, occurs as the 6th fight.
-        FinalEncounter = new Encounter("The Ringmaster", 3, new List<string>() { "", "", "", "", "" }, RingMasterPattern);
+        FinalEncounter = new Encounter("The Ringmaster", 3, new List<string>() { "Carigold", "Gleeon", "gold Sealfie", "goldClown", "goldlemonade" }, RingMasterPattern);
 
     }
 
