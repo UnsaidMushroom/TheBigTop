@@ -170,6 +170,7 @@ namespace recruits
                 damage = Mathf.CeilToInt(damage *  levelUpCoefficient);
 
             }
+            remainingHP = maxHP;
 
         }
 
