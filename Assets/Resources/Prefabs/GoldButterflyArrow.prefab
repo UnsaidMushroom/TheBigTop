@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2984454550455747206}
   - component: {fileID: 46616662439787432}
   m_Layer: 0
-  m_Name: Butterfly Arrow
+  m_Name: GoldButterflyArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -8260868718776440443, guid: 019953be1e713814baa4371df502c0d5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.99463403, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
