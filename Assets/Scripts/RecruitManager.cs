@@ -72,11 +72,11 @@ namespace recruits {
             //masterRecruitDict.Add("simpleCommon3", new Recruit("simpleCommon3", Rarity.COMMON, 5, "simple air attack", 30));
             //masterRecruitDict.Add("simpleCommon4", new Recruit("simpleCommon4", Rarity.COMMON, 5, "simple ice attack", 30));
             //masterRecruitDict.Add("err 1", new Recruit("err 1", Rarity.COMMON, 5, "simple ice attack", 30));
-            masterRecruitDict.Add("Sealfie", new Recruit("Sealfie", Rarity.COMMON, 3, "a seal with a bouncy ball. Takes hits well. This is incredibly serious.", 65, "SealBall", 1));
+            masterRecruitDict.Add("Sealfie", new Recruit("Sealfie", Rarity.COMMON, 3, "a seal with a bouncy ball. Takes hits well. This is incredibly sealious.", 65, "SealBall", 1));
             masterRecruitDict.Add("Carrol", new Recruit("Carrol", Rarity.COMMON, 4, "a horse who has left the carousel. Simple horn attack. Seriously.", 50, "BasicHorn", 1));
             masterRecruitDict.Add("Plunkey", new Recruit("Plunkey", Rarity.COMMON, 2, "a monkey that found its way into the circus and started spinning plates. Very serious.", 30, "Plate", 1));
-            masterRecruitDict.Add("Tinyphant", new Recruit("Tinyphant", Rarity.COMMON, 4, "a plush-sized elephant. self-consoius about it, so don't mention it. Water attack. In a serious manner.", 50, "BigPeanut", 1));
-            masterRecruitDict.Add("Lemonmon", new Recruit("Lemonmon", Rarity.COMMON, 3, "a sour drink that thinks it is alive. citrus twist attack. Seriously sour.", 35, "LemonTwist", 1));
+            masterRecruitDict.Add("Tinyphant", new Recruit("Tinyphant", Rarity.COMMON, 4, "a plush-sized elephant. Self-consoius about it, so don't mention it. Peanut attack. In a serious manner.", 50, "BigPeanut", 1));
+            masterRecruitDict.Add("Lemonmon", new Recruit("Lemonmon", Rarity.COMMON, 3, "a sour drink that thinks it is alive. Citrus twist attack. Seriously sour.", 35, "LemonTwist", 1));
 
 
             //masterRecruitDict.Add("simpleRare1", new Recruit("simpleRare1", Rarity.RARE, 8, "rare fire attack", 40));
@@ -100,7 +100,7 @@ namespace recruits {
             masterRecruitDict.Add("Gold Funnel", new Recruit("Gold Funnel", Rarity.LEGENDARY, 15, "i know someone who LOVES funnel cake. do you LOVE funnel cake? Serious question.", 45, "GoldSugarRocket"));
             masterRecruitDict.Add("Gleeon", new Recruit("Gleeon", Rarity.LEGENDARY, 14, "a gold-lion-hybird-mix. King of The Junjl- Junjle but still social and with it and seriously ferocious.", 50, "GoldenWheel"));
             masterRecruitDict.Add("Carigold", new Recruit("Carigold", Rarity.LEGENDARY, 13, "24 cari-gold. Does things differently. Serious business.", 67, "Carousel"));
-            masterRecruitDict.Add("Gold Sealife", new Recruit("Gold Sealfie", Rarity.LEGENDARY, 11, "BABY! I compare you to a kiss by a rose on the GOLD. oooo, the more I get of you the seriouser it feels, yeah.", 80, "GoldSealBall"));
+            masterRecruitDict.Add("Gold Sealfie", new Recruit("Gold Sealfie", Rarity.LEGENDARY, 11, "BABY! I compare you to a kiss by a rose on the GOLD. oooo, the more I get of you the seriouser it feels, yeah.", 80, "GoldSealBall"));
             //masterRecruitDict.Add("simpleLegendary1", new Recruit("simpleLegendary1", Rarity.LEGENDARY, 15, "legendary fire attack", 60));
             //masterRecruitDict.Add("simpleLegendary2", new Recruit("simpleLegendary2", Rarity.LEGENDARY, 15, "legendary water attack", 60));
 
