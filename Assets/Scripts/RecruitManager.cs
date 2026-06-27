@@ -100,7 +100,7 @@ namespace recruits {
             masterRecruitDict.Add("Gold Funnel", new Recruit("Gold Funnel", Rarity.LEGENDARY, 15, "i know someone who LOVES funnel cake. do you LOVE funnel cake? Serious question.", 45, "GoldSugarRocket"));
             masterRecruitDict.Add("Gleeon", new Recruit("Gleeon", Rarity.LEGENDARY, 14, "a gold-lion-hybird-mix. King of The Junjl- Junjle but still social and with it and seriously ferocious.", 50, "GoldenWheel"));
             masterRecruitDict.Add("Carigold", new Recruit("Carigold", Rarity.LEGENDARY, 13, "24 cari-gold. Does things differently. Serious business.", 67, "Carousel"));
-            masterRecruitDict.Add("Gold Sealife", new Recruit("Gold Sealife", Rarity.LEGENDARY, 11, "BABY! I compare you to a kiss by a rose on the GOLD. oooo, the more I get of you the seriouser it feels, yeah.", 80, "GoldSealBall"));
+            masterRecruitDict.Add("Gold Sealife", new Recruit("Gold Sealfie", Rarity.LEGENDARY, 11, "BABY! I compare you to a kiss by a rose on the GOLD. oooo, the more I get of you the seriouser it feels, yeah.", 80, "GoldSealBall"));
             //masterRecruitDict.Add("simpleLegendary1", new Recruit("simpleLegendary1", Rarity.LEGENDARY, 15, "legendary fire attack", 60));
             //masterRecruitDict.Add("simpleLegendary2", new Recruit("simpleLegendary2", Rarity.LEGENDARY, 15, "legendary water attack", 60));
 
