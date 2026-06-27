@@ -134,7 +134,7 @@ public class EnemiesManager : BattleManager
 
 
         //final encounter is special, occurs as the 6th fight.
-        FinalEncounter = new Encounter("The Ringmaster", 3, new List<string>() { "Carigold", "Gleeon", "gold Sealfie", "goldClown", "goldlemonade" }, RingMasterPattern);
+        FinalEncounter = new Encounter("The Ringmaster", 3, RecruitManager.getRandomBattleRecruits(Rarity.LEGENDARY, Rarity.LEGENDARY, Rarity.LEGENDARY, Rarity.LEGENDARY, Rarity.LEGENDARY), RingMasterPattern);
 
     }
 
