@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using recruits;
 
+/// <summary>
+/// used as part of the UI
+/// used for close inspection of a recruit when viewing recruits
+/// </summary>
 public class DetailView : MonoBehaviour
 {
     public Image recruitImage;
@@ -13,7 +17,10 @@ public class DetailView : MonoBehaviour
     public GameObject SellButton;
     public TextMeshProUGUI SellText;
 
-
+    /// <summary>
+    /// sets the recruit to be inspected
+    /// </summary>
+    /// <param name="r"></param>
     public void applyRecruit(Recruit r)
     {
         recruitImage.sprite = r.sprite;

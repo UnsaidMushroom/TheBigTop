@@ -5,6 +5,9 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+/// <summary>
+/// a battle manager that handles the enemy side 
+/// </summary>
 public class EnemiesManager : BattleManager
 {
     public static EnemiesManager Instance;
@@ -54,12 +57,20 @@ public class EnemiesManager : BattleManager
     {
         //run active encounter logic
     }
+
+    /// <summary>
+    /// called when an enemy has been knocked out
+    /// </summary>
+    /// <param name="KOed"></param> the enemy knocked out
     public override void KnockOut(GameObject KOed)
     {
         base.KnockOut(KOed);
     }
 
-
+    /// <summary>
+    /// checks if the opponent has been fully knocked out
+    /// if so, displays the victory screen
+    /// </summary>
     public override void checkEliminated()
     {
         if (rotatingObjects.Count <= 0)
@@ -94,11 +105,18 @@ public class EnemiesManager : BattleManager
 
     }
 
+    /// <summary>
+    /// after a victory, proceeds to the carousel.
+    /// called by a button on the victory screen
+    /// </summary>
     public void ProceedToCarousel()
     {
         SceneManager.LoadScene("Carousel");
     }
 
+    /// <summary>
+    /// initializes the encounters the player may fight.
+    /// </summary>
     public void LoadEncounters()
     {
         encounters = new List<Encounter>();
@@ -122,6 +140,8 @@ public class EnemiesManager : BattleManager
         AttackPattern RingMasterPattern = new AttackPattern("fastLeftAttack", "spinSlightRight", "fastRightAttack", "spinVeryRight", "shortWait", "leftAttack", "spinVeryLeft");
 
         //for now, only placing one encounter, really will have more
+
+        // For the post-jam, we may want to be more deliberate with these instead of random...
         encounters.Add(new Encounter("default", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.COMMON), simplePattern));
         encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.RARE), simplePattern2));
         encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.EPIC, Rarity.COMMON, Rarity.RARE, Rarity.COMMON, Rarity.COMMON), simplePattern3));
@@ -134,13 +154,18 @@ public class EnemiesManager : BattleManager
         encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.EPIC, Rarity.RARE, Rarity.RARE, Rarity.COMMON), simplePattern6));
         encounters.Add(new Encounter("these names never show up anywhere", 1, RecruitManager.getRandomBattleRecruits(Rarity.COMMON, Rarity.COMMON, Rarity.RARE, Rarity.RARE, Rarity.COMMON), simplePattern4));
 
+        // in the future, we may want some other style of encounters, such as treasure rooms, or target practice, or something i dunno.
 
 
         //final encounter is special, occurs as the 6th fight.
+        // this is also how we can handle other boss fights, etc
         FinalEncounter = new Encounter("The Ringmaster", 3, RecruitManager.getRandomBattleRecruits(Rarity.LEGENDARY, Rarity.LEGENDARY, Rarity.LEGENDARY, Rarity.LEGENDARY, Rarity.LEGENDARY), RingMasterPattern);
 
     }
 
+    /// <summary>
+    /// prepares the upcoming battle
+    /// </summary>
     public void getNewEncounter()
     {
         battlesFought++;
@@ -173,7 +198,10 @@ public class EnemiesManager : BattleManager
         
     }
 
-    //call this at the beginning of battle and whenever the previous finishes. 
+    /// <summary>
+    /// starts the next move in the attack pattern.
+    /// called at beginning of battle and after each attack move
+    /// </summary>
     public void BeginNextMove()
     {
         if (layersDeep == 0 && BattleActive)
@@ -189,7 +217,7 @@ public class EnemiesManager : BattleManager
 
 
     
-
+    // i feel like the names are sufficiently descriptive for the attack options.
 
     public IEnumerator leftAttack()
     {

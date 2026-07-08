@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// a battle manager that handles the friendly side
+/// </summary>
 public class FriendliesManager : BattleManager
 {
     public static FriendliesManager Instance;
@@ -35,6 +38,9 @@ public class FriendliesManager : BattleManager
         applyScroll();
     }
 
+    /// <summary>
+    /// reads and applies the scroll rotation.
+    /// </summary>
     public void applyScroll()
     {
         float scrollAmt = scroll.ReadValue<Vector2>().y;
@@ -46,11 +52,19 @@ public class FriendliesManager : BattleManager
         }
     }
 
+    /// <summary>
+    /// called when an friend has been knocked out
+    /// </summary>
+    /// <param name="KOed"></param> the friend knocked out
     public override void KnockOut(GameObject KOed)
     {
         base.KnockOut(KOed);
     }
 
+    /// <summary>
+    /// checks if your side has been fully knocked out
+    /// if so, displays the loss screen
+    /// </summary>
     public override void checkEliminated()
     {
         if (rotatingObjects.Count <= 0)
@@ -62,7 +76,10 @@ public class FriendliesManager : BattleManager
         }
     }
 
-
+    /// <summary>
+    /// returns player to the main menu screen, resets everything.
+    /// called by a button on the loss screen
+    /// </summary>
     public void ReturnToMainMenu()
     {
         MoneyManager.Restart();
@@ -70,6 +87,9 @@ public class FriendliesManager : BattleManager
         SceneManager.LoadScene("MainMenu");
     }
 
+    /// <summary>
+    /// gathers and places the recruits that were selected for combat
+    /// </summary>
     public void LoadFriendlies()
     { 
         if (RecruitManager.Instance == null) //catch edge case
@@ -84,7 +104,10 @@ public class FriendliesManager : BattleManager
         
     }
 
-
+    /// <summary>
+    /// at start of battle, briefly display fight screen
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator DisplayFightScreen()
     {
         FightScreen.SetActive(true);

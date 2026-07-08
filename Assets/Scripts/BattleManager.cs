@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using recruits;
 using UnityEngine;
 
+/// <summary>
+/// A BattleManager manages part of the battle, either friendly or enemy
+/// </summary>
 public class BattleManager : MonoBehaviour
 {
     public Vector3 wheelPosition;
@@ -21,6 +24,11 @@ public class BattleManager : MonoBehaviour
 
     public AudioSource KOSound;
 
+    /// <summary>
+    /// Removes a rotating object when it is knocked out,
+    /// called by the rotating object when HP <= 0.
+    /// </summary>
+    /// <param name="KOed"></param> the gameObject that was knocked out
     public virtual void KnockOut(GameObject KOed)
     {
         Debug.Log(KOed.GetComponent<RotatingObject>().myRecruit.name + " was KOed!");
@@ -30,11 +38,18 @@ public class BattleManager : MonoBehaviour
         checkEliminated();
     }
 
+    /// <summary>
+    /// checks if all recruits on this side have been KO'ed.
+    /// this should maybe be abstract...
+    /// </summary>
     public virtual void checkEliminated()
     {
         Debug.Log("battleManager called, but needed friendly or enemy");
     }
 
+    /// <summary>
+    /// Places all recruits as GameObjects on this side.
+    /// </summary>
     public void PlaceRecruits()
     {
         float forwardAngle = (MaxActAngle + MinActAngle) / 2;
@@ -54,6 +69,11 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the rotating object that is active
+    /// </summary>
+    /// <param name="LorR"></param> the "left" or "right" or random of the actives to be gotten
+    /// <returns></returns> the corresponding active rotating object
     public RotatingObject getActive(string LorR)
     {
         RotatingObject closestLeft = null;
@@ -92,6 +112,10 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// gets a random active rotating object
+    /// </summary>
+    /// <returns></returns> either of the active rotating objects
     public RotatingObject getActive()
     {
         return getActive("rand");
