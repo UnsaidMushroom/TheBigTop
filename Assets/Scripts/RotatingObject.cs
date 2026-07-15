@@ -143,9 +143,13 @@ public class RotatingObject : Abstr_Damagable
                     EnemiesManager.Instance.KnockOut(gameObject);
                 }
             }
-            //apply damaged effects
-            HealthBar.size = new Vector2(myRecruit.remainingHP * HPtoWidth, 0.1f);
-            damageSound.Play();
+            else
+            {
+                //apply damaged effects
+                HealthBar.size = new Vector2(myRecruit.remainingHP * HPtoWidth, 0.1f);
+                damageSound.Play();
+            }
+            
         }
     }
 
