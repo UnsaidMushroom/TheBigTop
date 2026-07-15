@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// a basic projectile.
+/// shoots straight ahead
+/// </summary>
 public class ProjectileBasic : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,7 +18,7 @@ public class ProjectileBasic : Abstr_Projectile
         }
         myBody.linearVelocity = transform.up * speed;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +29,9 @@ public class ProjectileBasic : Abstr_Projectile
         }
     }
 
+    /// <summary>
+    /// destroy the projectile on impact.
+    /// </summary>
     public override void Damage()
     {
         Destroy(gameObject);

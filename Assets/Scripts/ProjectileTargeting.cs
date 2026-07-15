@@ -1,6 +1,9 @@
 using System.Net.Sockets;
 using UnityEngine;
 
+/// <summary>
+/// a projectile that aims toward where an opponent is.
+/// </summary>
 public class ProjectileTargeting : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +45,9 @@ public class ProjectileTargeting : Abstr_Projectile
         
     }
 
+    /// <summary>
+    /// destroy the projectile on impact.
+    /// </summary>
     public override void Damage()
     {
         Destroy(gameObject);

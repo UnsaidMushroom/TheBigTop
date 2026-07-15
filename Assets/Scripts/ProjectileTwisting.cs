@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// a projectile that twists as it moves.
+/// </summary>
 public class ProjectileTwisting : Abstr_Projectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +39,9 @@ public class ProjectileTwisting : Abstr_Projectile
         }
     }
 
+    /// <summary>
+    /// destroy the projectile on impact.
+    /// </summary>
     public override void Damage()
     {
         Destroy(gameObject);
