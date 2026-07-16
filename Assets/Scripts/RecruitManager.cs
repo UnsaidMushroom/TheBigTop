@@ -2,17 +2,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace recruits {
+
+    /// <summary>
+    /// the different rarities that recruits come at.
+    /// </summary>
     public enum Rarity
     {
         COMMON,
         RARE,
         EPIC,
-        LEGENDARY
+        LEGENDARY,
+        DEBUG
     }
 
     
 
-
+    /// <summary>
+    /// manages all recruits. 
+    /// Stores originals and deals out copies
+    /// </summary>
     public class RecruitManager : MonoBehaviour
     {
 
@@ -50,6 +58,9 @@ namespace recruits {
             }
         }
 
+        /// <summary>
+        /// initializes all the recruit lists and recruits
+        /// </summary>
         public void initializeRecruits()
         {
             //initialize collections
@@ -136,6 +147,12 @@ namespace recruits {
 
         }
 
+        // hypothetically, we could have unlockables, either as meta-progression or as certain reqs met. this would basically add them to the master dictionary if certain conditions met...
+
+
+        /// <summary>
+        /// sets the start of game recruits
+        /// </summary>
         public void setStartingRecruits()
         {
             battleRecruits = new List<Recruit>();
@@ -154,6 +171,11 @@ namespace recruits {
             Debug.Log(debugMsg);
         }
 
+        /// <summary>
+        /// gets a random recruit of the chosen rarity
+        /// </summary>
+        /// <param name="rarity"></param> the rarity requested
+        /// <returns></returns> a recruit of the chosen rarity
         public Recruit getRandomRecruit(Rarity rarity)
         {
             string temp = "error";
@@ -179,6 +201,11 @@ namespace recruits {
 
         }
 
+        /// <summary>
+        /// gets the name of a random recruit of the chosen rarity.
+        /// </summary>
+        /// <param name="rarity"></param> the rarity requested
+        /// <returns></returns> the name of a recruit of the chosen rarity
         public string getRandomStringRecruit(Rarity rarity)
         {
             string temp = "error";
@@ -201,6 +228,15 @@ namespace recruits {
             return temp;
         }
 
+        /// <summary>
+        /// gets five random recruits of given rarities
+        /// </summary>
+        /// <param name="r1"></param> first rarity selected
+        /// <param name="r2"></param> second rarity selected
+        /// <param name="r3"></param> third rarity selected
+        /// <param name="r4"></param> fourth rarity selected
+        /// <param name="r5"></param> fifth rarity selected
+        /// <returns></returns> a list containing 5 recruits
         public static List<string> getRandomBattleRecruits(Rarity r1,  Rarity r2, Rarity r3, Rarity r4, Rarity r5)
         {
             List<string> temp = new List<string>();
@@ -212,12 +248,19 @@ namespace recruits {
             return temp;
         }
 
+        /// <summary>
+        /// statically gets a random receruit of a given rarity
+        /// </summary>
+        /// <param name="rarity"></param> the rarity chosen
+        /// <returns></returns> a random recruit of the given rarity
         public static Recruit stcRandRecruit(Rarity rarity)
         {
             return Instance.getRandomRecruit(rarity);
         }
 
-
+        /// <summary>
+        /// resets the recruit manager between games
+        /// </summary>
         public void Restart()
         {
             recruitList.Clear();
@@ -225,7 +268,11 @@ namespace recruits {
         }
 
 
-
+        /// <summary>
+        /// gets the obtained recruits in a sorted manner.
+        /// </summary>
+        /// <param name="sortmode"></param> the mode of sorting: "rarity", "time", "level"
+        /// <returns></returns> the list of current recruits, sorted
         public List<Recruit> getSortedRecruits(string sortmode)
         {
             Recruit.sortMode = sortmode;
@@ -233,11 +280,20 @@ namespace recruits {
             return recruitList;
         }
 
+        /// <summary>
+        /// gets a new recruit instance by name
+        /// </summary>
+        /// <param name="name"></param> the name of the recruit sought
+        /// <returns></returns> the instance of the recruit
         public Recruit GetNewRecruit(string name)
         {
             return masterRecruitDict[name].getCopy();
         }
 
+        /// <summary>
+        /// removes a recruit from the obtained recruits
+        /// </summary>
+        /// <param name="r"></param> the recruit to remove
         public void removeRecruit(Recruit r)
         {
             recruitList.Remove(r);

@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
+/// <summary>
+/// a special button for selecting recruits.
+/// used to hold information and send it to the recruit viewer since the methods called by buttons can't have params
+/// </summary>
 public class RecruitButton : Button
 {
     public Recruit myRecruit = null;
@@ -14,7 +18,11 @@ public class RecruitButton : Button
 
     public GameObject selectedBox;
     
-
+    /// <summary>
+    /// sets the recruit this button is responsible for
+    /// </summary>
+    /// <param name="recruit"></param> the recruit this button displays
+    /// <param name="index"></param> the index in the recruit list this corresponds to
     public void setRecruit(Recruit recruit, int index)
     {
         myRecruit = recruit;
@@ -37,23 +45,33 @@ public class RecruitButton : Button
 
     }
 
+    /// <summary>
+    /// informs recruitviewer this button's recruit is chosen
+    /// </summary>
     public void chooseMe()
     {
         RecruitViewerWindow.selectedIndex = myIndex;
         Debug.Log("you have clicked a recruit!");
     }
 
+   
     public override void OnPointerClick(PointerEventData eventData)
     {
         chooseMe();
         base.OnPointerClick(eventData);
     }
 
+    /// <summary>
+    /// show that this has been selected
+    /// </summary>
     public void SelectMe()
     {
         selectedBox.SetActive(true);
     }
 
+    /// <summary>
+    /// show that this is no longer selected
+    /// </summary>
     public void UnselectMe()
     {
         selectedBox.SetActive(false);
