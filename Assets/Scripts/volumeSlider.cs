@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// controls the master volume.
+/// hypothetically, we could make sublasses of audiosource each for BGM,SFX,etc and then have separate sliders each adjust a variable for that class.
+/// </summary>
 public class volumeSlider : MonoBehaviour
 {
 
@@ -27,6 +32,9 @@ public class volumeSlider : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// updates the volume.
+    /// </summary>
     public void changeVol()
     {
         AudioListener.volume = volumeSlide.value;

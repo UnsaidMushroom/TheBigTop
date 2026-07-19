@@ -2,6 +2,10 @@ using recruits;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// how a recruit battles.
+/// the object that is used for the actual battling and spinning, etc.
+/// </summary>
 public class RotatingObject : Abstr_Damagable
 {
     
@@ -56,7 +60,15 @@ public class RotatingObject : Abstr_Damagable
         coolDownSecs = 0.25f;
     }
 
-
+    /// <summary>
+    /// initializes a rotating object.
+    /// </summary>
+    /// <param name="centerPos"></param> the center of the disk this rotates around
+    /// <param name="xRad"></param> the distance from center to right/leftmost edge of disk arc
+    /// <param name="yRad"></param> the distance from center to top/bottom edge of disk arc
+    /// <param name="angle"></param> the angle this disk starts from, counter-clockwise from the positive x axis.
+    /// <param name="minActAng"></param> the minimum angle for this to be considered in the active zone
+    /// <param name="maxActAng"></param> the maximum angle for this to be considered in the active zone
     public void applyStartingStuff(Vector3 centerPos, float xRad, float yRad, float angle, float minActAng, float maxActAng)
     {
         
@@ -102,6 +114,10 @@ public class RotatingObject : Abstr_Damagable
 
     }
 
+    /// <summary>
+    /// rotates around the disk a given amount.
+    /// </summary>
+    /// <param name="amount"></param> the amount, in degrees, to rotate.
     public void RotateAmount(float amount)
     {
         angle += rotateSpeed * amount * Time.deltaTime;
@@ -116,17 +132,27 @@ public class RotatingObject : Abstr_Damagable
         applyColor();
     }
 
+    /// <summary>
+    /// applies color tint depending on status.
+    /// </summary>
     public void applyColor()
     {
         myRenderer.color = (inActiveAngle()) ? activeColor : inactiveColor;
     }
 
 
+    /// <summary>
+    /// if no params, suffer some damage on contact.
+    /// </summary>
     public override void Damage()
     {
         Damage(5);
     }
 
+    /// <summary>
+    /// suffers the recieved damage to this object
+    /// </summary>
+    /// <param name="dmg"></param> the damage suffered
     public override void Damage(int dmg)
     {
         if (inActiveAngle())
@@ -153,9 +179,16 @@ public class RotatingObject : Abstr_Damagable
         }
     }
 
+    /// <summary>
+    /// determines if this is active or not.
+    /// </summary>
+    /// <returns></returns> true if this in in the active zone
     public bool inActiveAngle() => (angle < maxActiveAngle && angle > minActiveAngle);
 
-
+    /// <summary>
+    /// assigns this rotating object its recruit
+    /// </summary>
+    /// <param name="rec"></param> the recruit this is responsible for representing
     public void ApplyRecruit(Recruit rec)
     {
         myRecruit = rec;
@@ -165,7 +198,9 @@ public class RotatingObject : Abstr_Damagable
 
     }
 
-
+    /// <summary>
+    /// this object fires an attack.
+    /// </summary>
     public void Attack()
     {
         if (inActiveAngle() && coolDownTimer <= 0)

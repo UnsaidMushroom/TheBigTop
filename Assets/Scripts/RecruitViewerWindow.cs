@@ -4,6 +4,9 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// used to view player's recruits at the carousel
+/// </summary>
 public class RecruitViewerWindow : MonoBehaviour
 {
     public GameObject recruitTemplate;
@@ -42,18 +45,27 @@ public class RecruitViewerWindow : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// standard display of player's recruits.
+    /// </summary>
     public void viewRecruitsStandard()
     {
         currentMode = "simple";
         populate();
     }
 
+    /// <summary>
+    /// display the recruits in preparation for battle.
+    /// </summary>
     public void viewRecruitsForBattle()
     {
         currentMode = "battlePrep";
         populate();
     }
 
+    /// <summary>
+    /// populates the viewer with the recruit objects.
+    /// </summary>
     public void populate()
     {
         gameObject.SetActive(true);
@@ -88,6 +100,10 @@ public class RecruitViewerWindow : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// changes the sortmode used to display the recruits.
+    /// currently unused
+    /// </summary>
     public void changeSortMode()
     {
         if (sortmode == "rarity")
@@ -112,6 +128,9 @@ public class RecruitViewerWindow : MonoBehaviour
         populate();
     }
 
+    /// <summary>
+    /// hides the display once done.
+    /// </summary>
     public void hide()
     {
         int max = population.Count;
@@ -130,6 +149,10 @@ public class RecruitViewerWindow : MonoBehaviour
 
 
     //public void SetDisplayRecruit(Recruit recruit) { displayedRecruit = recruit; }  
+    /// <summary>
+    /// displays the detail view of a recruit. 
+    /// called by recruit buttons
+    /// </summary>
     public void displayRecruit()
     {
         Debug.Log("displaying a recruit: " + population[selectedIndex].GetComponent<RecruitButton>().myRecruit.name);
@@ -180,6 +203,9 @@ public class RecruitViewerWindow : MonoBehaviour
         //open display window and give it the recruit
     }
 
+    /// <summary>
+    /// once 5 recruits selected, can proceed to battle.
+    /// </summary>
     public void beginBattle()
     {
         if (currentMode != "battlePrep" || selecteds.Count < 5)
@@ -196,7 +222,9 @@ public class RecruitViewerWindow : MonoBehaviour
         SceneManager.LoadScene("Battle");
     }
 
-
+    /// <summary>
+    /// sells the currently selected recruit.
+    /// </summary>
     public void SellSelected()
     {
         

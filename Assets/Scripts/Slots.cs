@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-
+/// <summary>
+/// handles the logic for the slot machine
+/// </summary>
 public class Slots : MonoBehaviour
 {
 
@@ -24,6 +26,9 @@ public class Slots : MonoBehaviour
     public AudioSource LegendarySound;
     public AudioSource Kachunk;
     public AudioSource ErrSound;
+    /// <summary>
+    /// the possible options that can result from a slots roll.
+    /// </summary>
     public enum rollOption
     {
         CHERRY,
@@ -43,7 +48,10 @@ public class Slots : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// play the slots, win prizes.
+    /// I think animation here would be nice
+    /// </summary>
     public void spinMachine()
     {
 
@@ -110,7 +118,10 @@ public class Slots : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// gets the result for a single column
+    /// </summary>
+    /// <returns></returns> cherry, bell, or seven, randomly, weighted
     public rollOption getRandomRoll()
     {
         int MAX = 10;
@@ -131,6 +142,11 @@ public class Slots : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// assigns a sprite to image based on option
+    /// </summary>
+    /// <param name="image"></param> the image to assign sprite to 
+    /// <param name="option"></param> the option to infer sprite from
     public void assignSprite(Image image, rollOption option)
     {
         if (option  == rollOption.CHERRY)

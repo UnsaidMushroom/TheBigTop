@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// seems to rotate at a constant speed.
+/// i think this is unused? rotation seems to be handled by rotating object.
+/// </summary>
 public class Rotator : MonoBehaviour
 {
     public Rigidbody2D myBody;
